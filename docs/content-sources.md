@@ -57,4 +57,4 @@ Approved screenshots for professional systems, first-person lessons learned, spe
 - MyCare: https://www.mycare.life/
 - Iowa AI Gateway pilot announcement: https://its.uiowa.edu/news/2026/01/ai-gateway-pilot-what-it-who-its-and-how-join
 
-These links were supplied directly by the author. Public website captures will be labeled separately from application screenshots; internal screens are not inferred from public marketing pages.
+These links were supplied directly by the author. Five public-page captures are included: Titronics, MyCare, Simplex company website, Simplex applications entry page, and the AI Gateway announcement. They are labeled by their actual scope; internal screens are not inferred from public marketing pages. Cranial Technologies returned HTTP 403 to the capture runner, so its client link and attribution are included without a fabricated preview. Capture provenance is recorded in docs/work-preview-captures.json.

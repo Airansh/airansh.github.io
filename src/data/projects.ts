@@ -228,6 +228,16 @@ export const projects: Project[] = [
   },
   {
     id: 'simplex-operations',
+    screenshots: [
+      {
+        src: 'images/work/simplex-operations.jpg',
+        alt: 'Simplex applications entry page with links to the operations software and administration',
+        caption: 'Public entry page for the Simplex operations platform.',
+        width: 1440,
+        height: 1000,
+        sourceUrl: 'https://simplexsoftware.co.in/',
+      },
+    ],
     links: [
       {
         label: 'Visit Simplex operations platform',

@@ -147,6 +147,14 @@ test('public project links and image previews remain separate from case-study na
 }) => {
   for (const project of projects.filter((p) => p.links?.length)) {
     await page.goto(`/#/work/${project.id}`)
+    if (project.screenshots?.length) {
+      const preview = page.locator('.work-screenshot img').first()
+      await preview.scrollIntoViewIfNeeded()
+      await expect(preview).toBeVisible()
+      await expect
+        .poll(() => preview.evaluate((img) => (img as HTMLImageElement).naturalWidth))
+        .toBeGreaterThan(0)
+    }
     for (const link of project.links!) {
       const action = page.getByRole('link', { name: link.label })
       await expect(action).toHaveAttribute('href', link.url)

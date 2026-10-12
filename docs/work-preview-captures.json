@@ -2,8 +2,14 @@
   {
     "projectId": "simplex-operations",
     "url": "https://simplexsoftware.co.in/",
-    "status": "unavailable",
-    "error": "Error: Site returned an access challenge or incomplete page"
+    "src": "images/work/simplex-operations.jpg",
+    "title": "Simplex: Applications",
+    "bodyTextLength": 45,
+    "finalUrl": "https://simplexsoftware.co.in/",
+    "width": 1440,
+    "height": 1000,
+    "capturedAt": "2026-10-12T06:09:12.899Z",
+    "status": "captured"
   },
   {
     "projectId": "chenoa-healthcare",
