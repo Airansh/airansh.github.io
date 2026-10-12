@@ -1,26 +1,26 @@
 # GitHub Pages deployment
 
-The portfolio has been prepared locally. No public repository has been created, Pages settings changed, code pushed, or deployment triggered by this task. The owner has approved publishing to `Airansh/Airansh.github.io`, including repository creation if needed. Further confirmation for this publication is unnecessary. The remaining blocker is cloud network access to `api.github.com`; `airansh.github.io` is also required for live verification. Both domains have been saved as additive custom network requirements.
+The target is `Airansh/Airansh.github.io` and the public URL is `https://airansh.github.io/`. A GitHub user site requires the repository name to match the account. The existing `Airansh/vedanshairen.github.io` repository can also host a project site under `/vedanshairen.github.io/`.
 
-## Choose the target
+## Initial publication
 
-| Repository                                           | Expected public URL                                 | Vite base                  |
-| ---------------------------------------------------- | --------------------------------------------------- | -------------------------- |
-| `Airansh/vedanshairen.github.io` (existing checkout) | `https://airansh.github.io/vedanshairen.github.io/` | `/vedanshairen.github.io/` |
-| `Airansh/Airansh.github.io` (preferred user site)    | `https://airansh.github.io/`                        | `/`                        |
-
-Creation of the second repository is approved if needed. Inspect whether it already exists and preserve any existing content. The website source is portable between these targets.
-
-## Complete the approved publication
-
-1. Apply the saved network additions in cloud environment settings, then check GitHub API access with `gh api user --jq .login`. The existing `GH_TOKEN` binding is present, but its API usability is untested while the host is blocked. Do not print credential values.
-2. Inspect `Airansh/Airansh.github.io` through the API. If absent and creation is permitted, create it as public with `gh repo create Airansh/Airansh.github.io --public --description "Vedansh Airen — software engineering portfolio"`. Preserve any existing repository content. Commit and push the reviewed files to its `main` branch. The existing remote can be reused for the existing target. Creating or changing a remote is unnecessary unless the preferred target is chosen.
-3. In that GitHub repository, open **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**.
+1. Ensure the public `Airansh/Airansh.github.io` repository exists. If the GitHub integration cannot create repositories, create it in GitHub with no initial README, license, or .gitignore.
+2. Push the reviewed source to its `main` branch, preserving any existing content and history.
+3. Open **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**.
 4. Open **Actions → Deploy portfolio to GitHub Pages → Run workflow**, selecting `main`.
-5. The workflow installs the lockfile dependencies, checks types/lint/tests, obtains the Pages base path, builds the deployment artifact, runs production browser checks against a separate root-base build, and publishes the preserved artifact.
-6. Open the deployment URL reported by GitHub. Verify the homepage, `#/work`, a refreshed project-detail URL, diagrams, theme toggle, and resume download on desktop and mobile.
+5. The workflow installs dependencies, checks types/lint/tests, obtains the Pages base path, builds the deployment artifact, runs production browser checks against a separate root-base build, and publishes the preserved artifact.
+6. Verify the deployment URL, `#/work`, a refreshed project-detail URL, diagrams, theme toggle, and resume download on desktop and mobile.
 
-If GitHub says the workflow lacks permission, confirm repository write/Actions/Pages access using the existing platform authentication. Do not put tokens in source or request secret values in chat.
+CLI equivalents after the repository exists:
+
+```sh
+git remote add pages https://github.com/Airansh/Airansh.github.io.git
+git push pages HEAD:main
+gh api --method POST repos/Airansh/Airansh.github.io/pages -f build_type=workflow
+gh workflow run deploy.yml --repo Airansh/Airansh.github.io --ref main
+```
+
+Reuse an existing remote if already configured. If Pages is already enabled, inspect its settings before updating them. The GitHub identity must have repository write, workflow, Actions, and Pages administration permissions. Never store credentials in source.
 
 ## Future updates
 

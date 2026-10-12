@@ -38,11 +38,11 @@ Browser tests run against the production preview on port 4173. They use `/usr/bi
 
 ## Publishing
 
-The checked-out repository is `Airansh/vedanshairen.github.io`. Its normal project-site URL is `https://airansh.github.io/vedanshairen.github.io/`. The preferred root URL `https://airansh.github.io/` requires `Airansh/Airansh.github.io`.
+The publication target is `Airansh/Airansh.github.io`, serving `https://airansh.github.io/`. Source is prepared in the original `Airansh/vedanshairen.github.io` checkout.
 
-Publication to `Airansh/Airansh.github.io` has been approved by the owner. Public deployment has **not** been performed because the cloud network currently blocks GitHub API access. The Pages workflow is deliberately manual (`workflow_dispatch`) so pushing source does not publish it. Follow [the deployment guide](docs/deployment.md). Subsequent approved updates can use the same manual workflow. CI runs automatically on main-branch pushes and pull requests.
+The Pages workflow is manual (`workflow_dispatch`). Follow [the deployment guide](docs/deployment.md) to publish reviewed changes. CI runs automatically on main-branch pushes and pull requests.
 
-Vite supports both targets through `VITE_BASE_PATH`; the deployment workflow obtains the base path from `actions/configure-pages`. Navigation uses hash routes so direct links and refreshes do not depend on server rewrites. This tradeoff means social previews use the site's shared metadata rather than unique metadata served for each hash route.
+Vite supports both a root user site and a project subpath through `VITE_BASE_PATH`; the deployment workflow obtains the base path and public URL from `actions/configure-pages`. Navigation uses hash routes so direct links and refreshes do not depend on server rewrites. Social previews use the site's shared metadata rather than unique metadata served for each hash route.
 
 ## Design and assets
 

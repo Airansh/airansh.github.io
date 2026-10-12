@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-const siteUrl = `${(process.env.VITE_SITE_URL || 'https://airansh.github.io/vedanshairen.github.io/').replace(/\/+$/, '')}/`
+const siteUrl = `${(process.env.VITE_SITE_URL || 'https://airansh.github.io/').replace(/\/+$/, '')}/`
 export default defineConfig({
   plugins: [
     react(),
