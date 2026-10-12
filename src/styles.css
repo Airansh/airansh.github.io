@@ -45,7 +45,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-size: 15px;
+  font-size: 1rem;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
@@ -91,9 +91,11 @@ h4 {
 }
 h1,
 h2 {
+  overflow-wrap: anywhere;
   letter-spacing: -0.045em;
 }
 h3 {
+  overflow-wrap: anywhere;
   letter-spacing: -0.025em;
 }
 svg {
@@ -130,11 +132,11 @@ section[tabindex]:focus {
   margin-bottom: 50px;
 }
 .page-heading h1 {
-  font-size: clamp(40px, 4.3vw, 64px);
+  font-size: clamp(2.5rem, 4.3vw, 4rem);
   margin: 22px 0;
 }
 .page-heading > p {
-  font-size: 18px;
+  font-size: 1.1875rem;
   line-height: 1.7;
   color: var(--muted);
   max-width: 720px;
@@ -144,7 +146,7 @@ section[tabindex]:focus {
   align-items: center;
   gap: 10px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+  font-size: 0.75rem;
   letter-spacing: 1.5px;
   font-weight: 400;
   color: var(--accent);
@@ -164,7 +166,7 @@ section[tabindex]:focus {
   padding: 13px 20px;
   border-radius: 5px;
   border: 1px solid transparent;
-  font-size: 13px;
+  font-size: 0.9375rem;
   font-weight: 550;
   line-height: 1.5;
   transition:
@@ -194,7 +196,7 @@ section[tabindex]:focus {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  font-size: 13px;
+  font-size: 0.9375rem;
   font-weight: 500;
   color: var(--accent);
 }
@@ -228,7 +230,7 @@ section[tabindex]:focus {
   top: 10px;
 }
 .small-note {
-  font-size: 12px;
+  font-size: 0.875rem;
   color: var(--subtle);
 }
 .site-header {
@@ -255,7 +257,7 @@ section[tabindex]:focus {
   gap: 14px;
 }
 .brand-mark {
-  font-size: 36px;
+  font-size: 2.25rem;
   letter-spacing: -4px;
   font-weight: 600;
   line-height: 1;
@@ -264,14 +266,14 @@ section[tabindex]:focus {
   color: var(--accent);
 }
 .brand-name {
-  font-size: 13px;
+  font-size: 0.9375rem;
   font-weight: 550;
   line-height: 1.5;
 }
 .brand-name > span {
   display: block;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 8px;
+  font-size: 0.75rem;
   letter-spacing: 1px;
   color: var(--subtle);
   margin-top: 2px;
@@ -283,7 +285,7 @@ section[tabindex]:focus {
   align-items: center;
 }
 .desktop-nav a {
-  font-size: 12px;
+  font-size: 0.875rem;
   color: var(--muted);
   height: 100%;
   display: flex;
@@ -309,7 +311,7 @@ section[tabindex]:focus {
   gap: 15px;
 }
 .contact-nav {
-  font-size: 12px;
+  font-size: 0.875rem;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -328,31 +330,31 @@ section[tabindex]:focus {
 }
 .hero {
   display: grid;
-  grid-template-columns: 1.25fr 1fr;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
   gap: 65px;
   align-items: center;
   padding-block: 105px 94px;
 }
 .hero h1 {
-  font-size: clamp(44px, 4.8vw, 72px);
+  font-size: clamp(2.75rem, 4.8vw, 4.5rem);
   line-height: 1.06;
   letter-spacing: -0.057em;
   margin-top: 26px;
   margin-bottom: 28px;
-  white-space: nowrap;
+  white-space: normal;
 }
 .hero h1 > span {
   color: var(--accent);
 }
 .hero-intro {
-  font-size: 20px;
+  font-size: 1.3125rem;
   line-height: 1.55;
   max-width: 490px;
   letter-spacing: -0.35px;
 }
 .hero-description {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 1rem;
   max-width: 480px;
   line-height: 1.9;
   margin-top: 16px;
@@ -366,7 +368,7 @@ section[tabindex]:focus {
   display: flex;
   gap: 8px;
   align-items: center;
-  font-size: 10px;
+  font-size: 0.75rem;
   color: var(--subtle);
   margin-top: 30px;
 }
@@ -397,7 +399,7 @@ section[tabindex]:focus {
   justify-content: space-between;
   gap: 14px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 8px;
+  font-size: 0.75rem;
   letter-spacing: 0.9px;
   color: var(--subtle);
   padding: 17px 21px;
@@ -445,19 +447,19 @@ section[tabindex]:focus {
 }
 .blueprint-node small {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 7px;
+  font-size: 0.75rem;
   letter-spacing: 1px;
   color: var(--subtle);
 }
 .blueprint-node strong {
   display: block;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.0625rem;
   letter-spacing: -0.2px;
   margin-top: 3px;
 }
 .blueprint-node p {
-  font-size: 9px;
+  font-size: 0.75rem;
   color: var(--muted);
   margin-top: 4px;
 }
@@ -476,7 +478,7 @@ section[tabindex]:focus {
   gap: 8px;
   color: var(--subtle);
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 7px;
+  font-size: 0.75rem;
   position: relative;
 }
 .connector > span {
@@ -502,10 +504,10 @@ section[tabindex]:focus {
 }
 .blueprint-bottom {
   border-top: 1px solid var(--line);
-  font-size: 8px;
+  font-size: 0.75rem;
 }
 .blueprint-cross {
-  font-size: 18px;
+  font-size: 1.1875rem;
   line-height: 1;
 }
 .impact-strip {
@@ -530,17 +532,17 @@ section[tabindex]:focus {
   border: 0;
 }
 .impact-grid strong {
-  font-size: 36px;
+  font-size: 2.25rem;
   font-weight: 450;
   letter-spacing: -2px;
   line-height: 1;
 }
 .impact-grid strong span {
   color: var(--accent);
-  font-size: 25px;
+  font-size: 1.625rem;
 }
 .impact-grid p {
-  font-size: 11px;
+  font-size: 0.8125rem;
   line-height: 1.6;
   color: var(--muted);
 }
@@ -552,7 +554,7 @@ section[tabindex]:focus {
   margin-bottom: 35px;
 }
 .section-heading h2 {
-  font-size: 36px;
+  font-size: 2.25rem;
   line-height: 1.2;
 }
 .section-heading .eyebrow {
@@ -565,7 +567,7 @@ section[tabindex]:focus {
   padding-bottom: 3px;
 }
 .section-heading-aside p {
-  font-size: 12px;
+  font-size: 0.875rem;
   color: var(--muted);
   margin-bottom: 12px;
 }
@@ -603,7 +605,7 @@ section[tabindex]:focus {
 }
 .card-meta {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 8px;
+  font-size: 0.75rem;
   line-height: 1.7;
   color: var(--subtle);
   letter-spacing: 0.5px;
@@ -613,7 +615,7 @@ section[tabindex]:focus {
   gap: 8px;
 }
 .project-card h3 {
-  font-size: 21px;
+  font-size: 1.375rem;
   margin-top: 14px;
   margin-bottom: 12px;
 }
@@ -641,7 +643,7 @@ section[tabindex]:focus {
   outline-offset: 4px;
 }
 .project-card p {
-  font-size: 12px;
+  font-size: 0.875rem;
   line-height: 1.8;
   color: var(--muted);
   margin-bottom: 19px;
@@ -652,7 +654,7 @@ section[tabindex]:focus {
   gap: 5px;
 }
 .tags > span {
-  font-size: 9px;
+  font-size: 0.75rem;
   color: var(--muted);
   padding: 3px 7px;
   border: 1px solid var(--line);
@@ -670,7 +672,7 @@ section[tabindex]:focus {
   margin-top: 22px;
   padding-top: 15px;
   border-top: 1px solid var(--line);
-  font-size: 9px;
+  font-size: 0.75rem;
   color: var(--subtle);
 }
 .card-footer > span:last-child {
@@ -691,7 +693,7 @@ section[tabindex]:focus {
   top: 16px;
   left: 20px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 7px;
+  font-size: 0.75rem;
   letter-spacing: 1px;
   color: var(--subtle);
 }
@@ -703,7 +705,7 @@ section[tabindex]:focus {
   padding-top: 53px;
 }
 .model-map > span {
-  font-size: 10px;
+  font-size: 0.75rem;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 4px;
@@ -728,11 +730,11 @@ section[tabindex]:focus {
   border-radius: 5px;
   padding: 8px;
   background: var(--soft);
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .model-hub small {
   display: block;
-  font-size: 7px;
+  font-size: 0.75rem;
   color: var(--subtle);
   font-family: 'IBM Plex Mono', monospace;
 }
@@ -753,7 +755,7 @@ section[tabindex]:focus {
   display: flex;
   justify-content: space-between;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 7px;
+  font-size: 0.75rem;
   color: var(--muted);
   margin-top: 12px;
 }
@@ -779,7 +781,7 @@ section[tabindex]:focus {
   color: #bdb8dd;
 }
 .vr-visual > span {
-  font-size: 34px;
+  font-size: 2.125rem;
   font-weight: 300;
   letter-spacing: -2px;
 }
@@ -797,7 +799,7 @@ section[tabindex]:focus {
 .vr-visual > small {
   position: absolute;
   bottom: 18px;
-  font-size: 8px;
+  font-size: 0.75rem;
   color: var(--muted);
   font-family: 'IBM Plex Mono', monospace;
 }
@@ -815,12 +817,12 @@ section[tabindex]:focus {
   background: var(--surface);
   padding: 13px 12px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 17px;
+  font-size: 1.125rem;
   color: var(--accent);
 }
 .pipeline-visual small {
   display: block;
-  font-size: 8px;
+  font-size: 0.75rem;
   color: var(--muted);
   margin-top: 4px;
 }
@@ -842,7 +844,7 @@ section[tabindex]:focus {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 4px;
-  font-size: 10px;
+  font-size: 0.75rem;
   box-shadow: 3px 4px 0 var(--line);
   display: flex;
   justify-content: space-between;
@@ -851,7 +853,7 @@ section[tabindex]:focus {
   border-color: #68866f;
 }
 .layers-visual i {
-  font-size: 7px;
+  font-size: 0.75rem;
   font-style: normal;
   color: var(--subtle);
   font-family: 'IBM Plex Mono', monospace;
@@ -875,15 +877,15 @@ section[tabindex]:focus {
 }
 .approach-grid article > div > span {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+  font-size: 0.75rem;
   color: var(--subtle);
 }
 .approach-grid h3 {
-  font-size: 19px;
+  font-size: 1.25rem;
   margin-bottom: 14px;
 }
 .approach-grid p {
-  font-size: 13px;
+  font-size: 0.9375rem;
   color: var(--muted);
   line-height: 1.8;
 }
@@ -893,12 +895,12 @@ section[tabindex]:focus {
   gap: 90px;
 }
 .career-preview h2 {
-  font-size: 36px;
+  font-size: 2.25rem;
   margin: 20px 0;
 }
 .career-preview p {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 1rem;
   max-width: 440px;
   margin-bottom: 25px;
 }
@@ -915,15 +917,15 @@ section[tabindex]:focus {
 .career-number {
   font-family: 'IBM Plex Mono', monospace;
   color: var(--subtle);
-  font-size: 10px;
+  font-size: 0.75rem;
 }
 .career-list strong {
   font-weight: 500;
-  font-size: 15px;
+  font-size: 1rem;
 }
 .career-list small {
   display: block;
-  font-size: 11px;
+  font-size: 0.8125rem;
   color: var(--muted);
   margin-top: 5px;
 }
@@ -950,7 +952,7 @@ section[tabindex]:focus {
   margin-bottom: 25px;
 }
 .contact-band h2 {
-  font-size: 40px;
+  font-size: 2.5rem;
   line-height: 1.2;
 }
 .site-footer {
@@ -964,7 +966,7 @@ section[tabindex]:focus {
   margin-bottom: 52px;
 }
 .footer-name {
-  font-size: 23px;
+  font-size: 1.5rem;
   letter-spacing: -0.6px;
 }
 .footer-name > span {
@@ -972,7 +974,7 @@ section[tabindex]:focus {
   margin-left: 15px;
 }
 .footer-top p {
-  font-size: 12px;
+  font-size: 0.875rem;
   color: var(--muted);
   margin-top: 15px;
 }
@@ -985,7 +987,7 @@ section[tabindex]:focus {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 12px;
+  font-size: 0.875rem;
   color: var(--muted);
 }
 .footer-links > a:hover {
@@ -999,7 +1001,7 @@ section[tabindex]:focus {
   border-top: 1px solid var(--line);
   padding-top: 23px;
   color: var(--subtle);
-  font-size: 10px;
+  font-size: 0.75rem;
 }
 .footer-dot {
   margin-inline: 8px;
@@ -1032,7 +1034,7 @@ section[tabindex]:focus {
   border: 0;
   outline: none;
   color: var(--ink);
-  font-size: 13px;
+  font-size: 0.9375rem;
 }
 .search-field input::placeholder {
   color: var(--subtle);
@@ -1050,7 +1052,7 @@ section[tabindex]:focus {
   background: var(--bg);
   border: 0;
   color: var(--ink);
-  font-size: 13px;
+  font-size: 0.9375rem;
   padding: 3px 6px;
 }
 .filter-chips {
@@ -1063,7 +1065,7 @@ section[tabindex]:focus {
   background: transparent;
   border: 1px solid var(--line);
   border-radius: 4px;
-  font-size: 11px;
+  font-size: 0.8125rem;
   color: var(--muted);
   display: flex;
   gap: 10px;
@@ -1079,7 +1081,7 @@ section[tabindex]:focus {
   border-color: var(--accent);
 }
 .filter-chips button > span {
-  font-size: 9px;
+  font-size: 0.75rem;
   opacity: 0.8;
 }
 .results-label {
@@ -1088,7 +1090,7 @@ section[tabindex]:focus {
   align-items: center;
   margin: 25px 0 20px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+  font-size: 0.75rem;
   color: var(--subtle);
   min-height: 24px;
 }
@@ -1098,7 +1100,7 @@ section[tabindex]:focus {
   display: flex;
   gap: 6px;
   align-items: center;
-  font-size: 11px;
+  font-size: 0.8125rem;
   color: var(--accent);
 }
 .work-grid {
@@ -1117,7 +1119,7 @@ section[tabindex]:focus {
   color: var(--subtle);
 }
 .empty-state h2 {
-  font-size: 25px;
+  font-size: 1.625rem;
 }
 .empty-state p {
   color: var(--muted);
@@ -1128,7 +1130,7 @@ section[tabindex]:focus {
   gap: 8px;
   align-items: center;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 0.875rem;
   margin-bottom: 40px;
 }
 .back-link:hover {
@@ -1138,17 +1140,17 @@ section[tabindex]:focus {
   max-width: 800px;
 }
 .detail-heading h1 {
-  font-size: clamp(42px, 5vw, 70px);
+  font-size: clamp(2.625rem, 5vw, 4.375rem);
   margin: 22px 0 14px;
 }
 .detail-subtitle {
-  font-size: 24px;
+  font-size: 1.5625rem;
   color: var(--accent);
   letter-spacing: -0.5px;
   margin-bottom: 18px;
 }
 .detail-heading > p:not(.detail-subtitle) {
-  font-size: 17px;
+  font-size: 1.125rem;
   line-height: 1.7;
   color: var(--muted);
 }
@@ -1164,7 +1166,7 @@ section[tabindex]:focus {
   align-items: center;
   background: transparent;
   border: 0;
-  font-size: 11px;
+  font-size: 0.8125rem;
   color: var(--muted);
   padding: 7px;
   border-radius: 4px;
@@ -1184,14 +1186,14 @@ section[tabindex]:focus {
 }
 .project-facts dt {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--subtle);
   margin-bottom: 7px;
 }
 .project-facts dd {
-  font-size: 13px;
+  font-size: 0.9375rem;
   margin: 0;
 }
 .detail-layout {
@@ -1207,7 +1209,7 @@ section[tabindex]:focus {
 .case-sidebar > p,
 .sidebar-tech > p {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px;
+  font-size: 0.75rem;
   letter-spacing: 1px;
   color: var(--subtle);
   margin-bottom: 16px;
@@ -1220,7 +1222,7 @@ section[tabindex]:focus {
   padding-left: 17px;
 }
 .case-sidebar nav a {
-  font-size: 12px;
+  font-size: 0.875rem;
   color: var(--muted);
   padding-block: 3px;
 }
@@ -1242,17 +1244,17 @@ section[tabindex]:focus {
   scroll-margin-top: 120px;
 }
 .case-content h2 {
-  font-size: 27px;
+  font-size: 1.75rem;
   margin-bottom: 20px;
 }
 .case-content h3 {
-  font-size: 18px;
+  font-size: 1.1875rem;
   margin: 24px 0 12px;
 }
 .case-content p,
 .case-content li {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.9;
 }
 .case-content ul {
@@ -1285,7 +1287,7 @@ section[tabindex]:focus {
   margin-bottom: 20px;
 }
 .implementation-list li > span {
-  font-size: 11px;
+  font-size: 0.8125rem;
   font-family: 'IBM Plex Mono', monospace;
   color: var(--accent);
   margin-top: 4px;
@@ -1300,7 +1302,7 @@ section[tabindex]:focus {
   border-radius: 6px;
 }
 .case-screenshot figcaption {
-  font-size: 11px;
+  font-size: 0.8125rem;
   color: var(--subtle);
   margin-top: 10px;
 }
@@ -1316,7 +1318,7 @@ section[tabindex]:focus {
   display: flex;
   gap: 12px;
   align-items: center;
-  font-size: 13px;
+  font-size: 0.9375rem;
 }
 .result-cards svg {
   color: var(--accent);
@@ -1336,22 +1338,22 @@ section[tabindex]:focus {
 }
 .documentation-note h3 {
   margin-top: 0;
-  font-size: 16px;
+  font-size: 1.0625rem;
 }
 .documentation-note p {
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .case-content .source-list {
   padding: 0;
   list-style: none;
 }
 .source-list small {
-  font-size: 10px;
+  font-size: 0.75rem;
   margin-left: 10px;
   color: var(--subtle);
 }
 .case-content .small-note {
-  font-size: 11px;
+  font-size: 0.8125rem;
   margin-top: 20px;
 }
 .related-work {
@@ -1360,7 +1362,7 @@ section[tabindex]:focus {
   margin-top: 45px;
 }
 .related-work h2 {
-  font-size: 30px;
+  font-size: 1.875rem;
 }
 .experience-intro {
   display: flex;
@@ -1376,7 +1378,7 @@ section[tabindex]:focus {
   gap: 8px;
   align-items: center;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .timeline-item {
   display: grid;
@@ -1387,11 +1389,11 @@ section[tabindex]:focus {
   padding-top: 4px;
   font-family: 'IBM Plex Mono', monospace;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 0.8125rem;
 }
 .timeline-date small {
   display: block;
-  font-size: 9px;
+  font-size: 0.75rem;
   color: var(--subtle);
   margin-top: 8px;
 }
@@ -1413,22 +1415,22 @@ section[tabindex]:focus {
 .role-label {
   font-family: 'IBM Plex Mono', monospace;
   color: var(--accent);
-  font-size: 9px;
+  font-size: 0.75rem;
   letter-spacing: 0.8px;
   text-transform: uppercase;
   line-height: 1.7;
 }
 .timeline-content h2 {
-  font-size: 28px;
+  font-size: 1.8125rem;
   margin: 10px 0 12px;
 }
 .role-kind {
-  font-size: 11px;
+  font-size: 0.8125rem;
   color: var(--subtle);
   margin-bottom: 15px;
 }
 .timeline-content > p {
-  font-size: 14px;
+  font-size: 1rem;
   color: var(--muted);
   max-width: 690px;
 }
@@ -1440,7 +1442,7 @@ section[tabindex]:focus {
   gap: 15px;
   align-items: center;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 0.875rem;
   color: var(--ink);
   list-style: none;
 }
@@ -1452,7 +1454,7 @@ section[tabindex]:focus {
   list-style: disc;
   margin: 18px 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 0.9375rem;
   line-height: 1.8;
 }
 .timeline-content li {
@@ -1472,7 +1474,7 @@ section[tabindex]:focus {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 4px;
-  font-size: 10px;
+  font-size: 0.75rem;
   color: var(--accent);
 }
 .timeline-projects > a:hover {
@@ -1489,11 +1491,11 @@ section[tabindex]:focus {
 }
 .section-number {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
+  font-size: 0.875rem;
   color: var(--subtle);
 }
 .architecture-heading h2 {
-  font-size: 27px;
+  font-size: 1.75rem;
   margin-top: 5px;
 }
 .architecture-heading > .text-link {
@@ -1512,7 +1514,7 @@ section[tabindex]:focus {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--line);
-  font-size: 10px;
+  font-size: 0.75rem;
   color: var(--subtle);
 }
 .diagram-render {
@@ -1534,13 +1536,13 @@ section[tabindex]:focus {
 }
 .diagram-panel figcaption {
   padding: 14px 22px;
-  font-size: 12px;
+  font-size: 0.875rem;
   color: var(--muted);
   border-top: 1px solid var(--line);
 }
 .diagram-panel figcaption small {
   display: block;
-  font-size: 10px;
+  font-size: 0.75rem;
   color: var(--subtle);
   margin-top: 6px;
 }
@@ -1549,13 +1551,13 @@ section[tabindex]:focus {
   padding: 12px 22px;
 }
 .diagram-source summary {
-  font-size: 11px;
+  font-size: 0.8125rem;
   color: var(--subtle);
   cursor: pointer;
 }
 .diagram-source pre {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+  font-size: 0.8125rem;
   overflow: auto;
   padding-block: 15px;
 }
@@ -1583,7 +1585,7 @@ section[tabindex]:focus {
   gap: 20px;
 }
 .dialog-head h2 {
-  font-size: 25px;
+  font-size: 1.625rem;
 }
 .zoom-controls {
   display: flex;
@@ -1594,7 +1596,7 @@ section[tabindex]:focus {
 }
 .zoom-controls > span {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+  font-size: 0.8125rem;
 }
 .dialog-canvas {
   max-height: 60vh;
@@ -1610,7 +1612,7 @@ section[tabindex]:focus {
   max-height: unset;
 }
 .diagram-dialog > p {
-  font-size: 12px;
+  font-size: 0.875rem;
   color: var(--muted);
   margin-top: 15px;
 }
@@ -1621,7 +1623,7 @@ section[tabindex]:focus {
 .planned-section > p,
 .templates-section > p {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 1rem;
   max-width: 760px;
   margin: 15px 0 25px;
 }
@@ -1636,18 +1638,18 @@ section[tabindex]:focus {
   display: flex;
   gap: 13px;
   align-items: center;
-  font-size: 13px;
+  font-size: 0.9375rem;
 }
 .planned-grid svg {
   color: var(--subtle);
 }
 .planned-grid small {
   margin-left: auto;
-  font-size: 10px;
+  font-size: 0.75rem;
   color: var(--subtle);
 }
 .templates-section h2 {
-  font-size: 32px;
+  font-size: 2rem;
   margin-top: 12px;
 }
 .templates-grid {
@@ -1664,7 +1666,7 @@ section[tabindex]:focus {
   min-width: 0;
 }
 .templates-grid summary {
-  font-size: 13px;
+  font-size: 0.9375rem;
   cursor: pointer;
 }
 .code-block {
@@ -1680,14 +1682,14 @@ section[tabindex]:focus {
   align-items: center;
   padding: 7px 13px;
   border-bottom: 1px solid var(--line);
-  font-size: 10px;
+  font-size: 0.75rem;
   color: var(--subtle);
 }
 .code-block pre {
   overflow: auto;
   padding: 18px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+  font-size: 0.8125rem;
   line-height: 1.8;
 }
 .token.keyword {
@@ -1712,7 +1714,7 @@ section[tabindex]:focus {
   margin-bottom: 65px;
 }
 .research-section h2 {
-  font-size: 30px;
+  font-size: 1.875rem;
 }
 .publication-card {
   display: grid;
@@ -1729,28 +1731,28 @@ section[tabindex]:focus {
   padding-top: 7px;
 }
 .publication-card h3 {
-  font-size: 24px;
+  font-size: 1.5625rem;
   max-width: 850px;
   margin: 12px 0;
   line-height: 1.3;
 }
 .publication-card p {
-  font-size: 13px;
+  font-size: 0.9375rem;
   color: var(--muted);
   max-width: 800px;
 }
 .publication-card .authors {
-  font-size: 11px;
+  font-size: 0.8125rem;
   margin-bottom: 14px;
 }
 .publication-venue {
-  font-size: 11px;
+  font-size: 0.8125rem;
   color: var(--subtle);
   margin: 16px 0;
 }
 .status-badge {
   display: inline-block;
-  font-size: 9px;
+  font-size: 0.75rem;
   color: var(--muted);
   padding: 4px 8px;
   background: var(--surface-2);
@@ -1776,12 +1778,12 @@ section[tabindex]:focus {
   margin-bottom: 26px;
 }
 .writing-card h3 {
-  font-size: 23px;
+  font-size: 1.5rem;
   line-height: 1.3;
   margin: 14px 0;
 }
 .writing-card p {
-  font-size: 13px;
+  font-size: 0.9375rem;
   color: var(--muted);
   margin-bottom: 25px;
 }
@@ -1802,11 +1804,11 @@ section[tabindex]:focus {
   margin-top: 10px;
 }
 .talk-row h3 {
-  font-size: 22px;
+  font-size: 1.4375rem;
   margin: 9px 0;
 }
 .talk-row p {
-  font-size: 13px;
+  font-size: 0.9375rem;
   color: var(--muted);
 }
 .writing-note {
@@ -1816,11 +1818,11 @@ section[tabindex]:focus {
   padding: 35px;
 }
 .writing-note h2 {
-  font-size: 29px;
+  font-size: 1.8125rem;
   margin: 12px 0;
 }
 .writing-note p {
-  font-size: 14px;
+  font-size: 1rem;
   color: var(--muted);
   max-width: 750px;
 }
@@ -1830,7 +1832,7 @@ section[tabindex]:focus {
   gap: 90px;
 }
 .about-text p {
-  font-size: 16px;
+  font-size: 1.0625rem;
   color: var(--muted);
   line-height: 1.9;
   margin-bottom: 20px;
@@ -1851,7 +1853,7 @@ section[tabindex]:focus {
   justify-content: center;
   aspect-ratio: 1.4;
   background: var(--soft);
-  font-size: 100px;
+  font-size: 6.25rem;
   letter-spacing: -12px;
   line-height: 1;
   border: 1px solid var(--line);
@@ -1862,10 +1864,10 @@ section[tabindex]:focus {
   color: var(--accent);
 }
 .about-card h2 {
-  font-size: 27px;
+  font-size: 1.75rem;
 }
 .about-card p {
-  font-size: 14px;
+  font-size: 1rem;
   color: var(--muted);
   margin-block: 15px 25px;
 }
@@ -1873,7 +1875,7 @@ section[tabindex]:focus {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 0.875rem;
   color: var(--subtle);
   margin-bottom: 22px;
 }
@@ -1902,27 +1904,27 @@ section[tabindex]:focus {
   display: block;
 }
 .education-grid h2 {
-  font-size: 25px;
+  font-size: 1.625rem;
   margin: 12px 0;
 }
 .education-grid h3 {
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--muted);
   margin-bottom: 15px;
 }
 .education-grid p {
-  font-size: 12px;
+  font-size: 0.875rem;
   color: var(--muted);
   margin-top: 12px;
 }
 .skills-section > h2,
 .leadership-section > h2 {
-  font-size: 35px;
+  font-size: 2.1875rem;
   margin-top: 20px;
 }
 .skills-section > p {
-  font-size: 14px;
+  font-size: 1rem;
   color: var(--muted);
   margin-top: 15px;
 }
@@ -1933,14 +1935,14 @@ section[tabindex]:focus {
   margin-top: 35px;
 }
 .skills-grid h3 {
-  font-size: 15px;
+  font-size: 1rem;
   margin-bottom: 20px;
 }
 .skills-grid .tags {
   gap: 7px;
 }
 .skills-grid .tags > span {
-  font-size: 10px;
+  font-size: 0.75rem;
   padding: 5px 8px;
 }
 .leadership-grid {
@@ -1950,11 +1952,11 @@ section[tabindex]:focus {
   margin-top: 35px;
 }
 .leadership-grid h3 {
-  font-size: 20px;
+  font-size: 1.3125rem;
   margin-bottom: 15px;
 }
 .leadership-grid p {
-  font-size: 13px;
+  font-size: 0.9375rem;
   color: var(--muted);
   line-height: 1.9;
 }
@@ -1970,7 +1972,7 @@ section[tabindex]:focus {
   display: flex;
   align-items: center;
   gap: 30px;
-  font-size: clamp(25px, 4vw, 48px);
+  font-size: clamp(1.5625rem, 4vw, 3rem);
   letter-spacing: -1.5px;
   margin: 10px 0 15px;
 }
@@ -1999,12 +2001,12 @@ section[tabindex]:focus {
 }
 .contact-option strong {
   display: block;
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: 500;
 }
 .contact-option small {
   display: block;
-  font-size: 10px;
+  font-size: 0.75rem;
   color: var(--muted);
   margin-top: 5px;
 }
@@ -2019,7 +2021,7 @@ section[tabindex]:focus {
   margin-top: 45px;
 }
 .contact-resume p {
-  font-size: 13px;
+  font-size: 0.9375rem;
   color: var(--muted);
 }
 .not-found {
@@ -2035,14 +2037,14 @@ section[tabindex]:focus {
   padding: 40px;
   text-align: center;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 0.9375rem;
 }
 @media (min-width: 1500px) {
   .hero {
     padding-block: 125px 110px;
   }
   .hero h1 {
-    font-size: 74px;
+    font-size: 4.625rem;
   }
 }
 @media (max-width: 1100px) {
@@ -2063,13 +2065,13 @@ section[tabindex]:focus {
     padding-block: 75px;
   }
   .hero h1 {
-    font-size: 54px;
+    font-size: 3.375rem;
   }
   .hero-intro {
-    font-size: 18px;
+    font-size: 1.1875rem;
   }
   .hero-location {
-    font-size: 9px;
+    font-size: 0.75rem;
     flex-wrap: wrap;
   }
   .blueprint-grid {
@@ -2080,10 +2082,10 @@ section[tabindex]:focus {
     gap: 10px;
   }
   .blueprint-node strong {
-    font-size: 14px;
+    font-size: 1rem;
   }
   .blueprint-node p {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .node-icon {
     width: 35px;
@@ -2093,10 +2095,10 @@ section[tabindex]:focus {
     gap: 12px;
   }
   .impact-grid strong {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
   .impact-grid p {
-    font-size: 10px;
+    font-size: 0.75rem;
   }
   .featured-grid {
     gap: 15px;
@@ -2105,7 +2107,7 @@ section[tabindex]:focus {
     padding: 20px;
   }
   .project-card h3 {
-    font-size: 19px;
+    font-size: 1.25rem;
   }
   .project-visual {
     height: 180px;
@@ -2154,7 +2156,7 @@ section[tabindex]:focus {
     gap: 48px;
   }
   .hero h1 {
-    font-size: 70px;
+    font-size: 4.375rem;
     white-space: normal;
   }
   .hero-copy {
@@ -2173,13 +2175,13 @@ section[tabindex]:focus {
     padding: 25px 35px;
   }
   .blueprint-node strong {
-    font-size: 17px;
+    font-size: 1.125rem;
   }
   .blueprint-node p {
-    font-size: 11px;
+    font-size: 0.8125rem;
   }
   .blueprint-node small {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .blueprint-node {
     padding: 17px 22px;
@@ -2189,13 +2191,13 @@ section[tabindex]:focus {
   }
   .blueprint-top,
   .blueprint-bottom {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .connector {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .hero-location {
-    font-size: 11px;
+    font-size: 0.8125rem;
   }
   .impact-grid {
     grid-template-columns: 1fr 1fr;
@@ -2210,16 +2212,16 @@ section[tabindex]:focus {
     border: 0;
   }
   .impact-grid strong {
-    font-size: 36px;
+    font-size: 2.25rem;
   }
   .impact-grid p {
-    font-size: 12px;
+    font-size: 0.875rem;
   }
   .section {
     padding-block: 70px;
   }
   .section-heading h2 {
-    font-size: 31px;
+    font-size: 1.9375rem;
   }
   .section-heading-aside p {
     display: none;
@@ -2250,7 +2252,7 @@ section[tabindex]:focus {
     padding: 35px;
   }
   .contact-band h2 {
-    font-size: 32px;
+    font-size: 2rem;
   }
   .contact-band {
     margin-bottom: 70px;
@@ -2265,10 +2267,10 @@ section[tabindex]:focus {
     flex-wrap: wrap;
   }
   .page-heading h1 {
-    font-size: 48px;
+    font-size: 3rem;
   }
   .page-heading > p {
-    font-size: 16px;
+    font-size: 1.0625rem;
   }
   .page {
     padding-top: 50px;
@@ -2311,7 +2313,7 @@ section[tabindex]:focus {
     padding-left: 25px;
   }
   .timeline-content h2 {
-    font-size: 24px;
+    font-size: 1.5625rem;
   }
   .writing-grid {
     grid-template-columns: 1fr;
@@ -2323,7 +2325,7 @@ section[tabindex]:focus {
     margin-bottom: 15px;
   }
   .publication-card h3 {
-    font-size: 22px;
+    font-size: 1.4375rem;
   }
   .about-grid {
     grid-template-columns: 1fr 260px;
@@ -2333,7 +2335,7 @@ section[tabindex]:focus {
     padding: 23px;
   }
   .about-text p {
-    font-size: 14px;
+    font-size: 1rem;
   }
   .leadership-grid {
     grid-template-columns: 1fr;
@@ -2356,7 +2358,7 @@ section[tabindex]:focus {
     margin-left: 35px;
   }
   .architecture-heading h2 {
-    font-size: 24px;
+    font-size: 1.5625rem;
   }
   .planned-grid {
     grid-template-columns: 1fr;
@@ -2375,13 +2377,13 @@ section[tabindex]:focus {
   }
   .brand-name {
     display: block;
-    font-size: 12px;
+    font-size: 0.875rem;
   }
   .brand-name > span {
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .brand-mark {
-    font-size: 32px;
+    font-size: 2rem;
   }
   .brand {
     gap: 11px;
@@ -2396,7 +2398,7 @@ section[tabindex]:focus {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 73px;
+    top: 100%;
     left: 0;
     right: 0;
     background: var(--bg);
@@ -2411,7 +2413,7 @@ section[tabindex]:focus {
     padding: 13px 0;
     border-bottom: 1px solid var(--line);
     color: var(--muted);
-    font-size: 15px;
+    font-size: 1rem;
   }
   .mobile-nav a.active {
     color: var(--accent);
@@ -2421,23 +2423,23 @@ section[tabindex]:focus {
     gap: 40px;
   }
   .eyebrow {
-    font-size: 8px;
+    font-size: 0.75rem;
     letter-spacing: 1px;
   }
   .tiny-line {
     width: 18px;
   }
   .hero h1 {
-    font-size: clamp(36px, 9.1vw, 53px);
+    font-size: clamp(2.25rem, 9.1vw, 3.3125rem);
     margin-top: 22px;
     line-height: 1.1;
     margin-bottom: 22px;
   }
   .hero-intro {
-    font-size: 18px;
+    font-size: 1.1875rem;
   }
   .hero-description {
-    font-size: 13px;
+    font-size: 0.9375rem;
   }
   .hero-buttons {
     gap: 8px;
@@ -2445,12 +2447,12 @@ section[tabindex]:focus {
   }
   .button {
     padding: 12px 14px;
-    font-size: 11px;
+    font-size: 0.8125rem;
     gap: 7px;
     min-height: 44px;
   }
   .hero-location {
-    font-size: 9px;
+    font-size: 0.75rem;
     gap: 6px;
     line-height: 1.8;
     margin-top: 24px;
@@ -2463,7 +2465,7 @@ section[tabindex]:focus {
   }
   .blueprint-top {
     padding: 13px 15px;
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .blueprint-grid {
     padding: 22px 17px;
@@ -2473,20 +2475,20 @@ section[tabindex]:focus {
     gap: 12px;
   }
   .blueprint-node strong {
-    font-size: 15px;
+    font-size: 1rem;
   }
   .blueprint-node p {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .blueprint-node small {
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .blueprint-bottom {
-    font-size: 7px;
+    font-size: 0.75rem;
     padding: 12px 15px;
   }
   .connector {
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .impact-grid {
     row-gap: 25px;
@@ -2499,14 +2501,14 @@ section[tabindex]:focus {
     padding-left: 18px;
   }
   .impact-grid strong {
-    font-size: 29px;
+    font-size: 1.8125rem;
     letter-spacing: -1px;
   }
   .impact-grid strong span {
-    font-size: 20px;
+    font-size: 1.3125rem;
   }
   .impact-grid p {
-    font-size: 9px;
+    font-size: 0.75rem;
     line-height: 1.6;
   }
   .section {
@@ -2519,7 +2521,7 @@ section[tabindex]:focus {
     margin-bottom: 28px;
   }
   .section-heading h2 {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
   .section-heading .eyebrow {
     margin-bottom: 17px;
@@ -2536,32 +2538,32 @@ section[tabindex]:focus {
     padding: 24px;
   }
   .project-card h3 {
-    font-size: 24px;
+    font-size: 1.5625rem;
   }
   .project-card p {
-    font-size: 13px;
+    font-size: 0.9375rem;
   }
   .project-visual {
     height: 210px;
   }
   .card-meta {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .tags > span {
-    font-size: 10px;
+    font-size: 0.75rem;
   }
   .card-footer {
-    font-size: 10px;
+    font-size: 0.75rem;
   }
   .model-map {
     padding-top: 60px;
   }
   .model-map > span {
-    font-size: 12px;
+    font-size: 0.875rem;
   }
   .model-hub {
     top: 128px;
-    font-size: 14px;
+    font-size: 1rem;
   }
   .health-visual {
     padding-top: 58px;
@@ -2577,7 +2579,7 @@ section[tabindex]:focus {
     padding-top: 50px;
   }
   .layers-visual > span {
-    font-size: 11px;
+    font-size: 0.8125rem;
   }
   .approach-grid {
     gap: 35px 24px;
@@ -2587,16 +2589,16 @@ section[tabindex]:focus {
     margin-bottom: 20px;
   }
   .approach-grid h3 {
-    font-size: 17px;
+    font-size: 1.125rem;
   }
   .approach-grid p {
-    font-size: 12px;
+    font-size: 0.875rem;
   }
   .career-preview h2 {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
   .career-preview p {
-    font-size: 13px;
+    font-size: 0.9375rem;
   }
   .contact-band {
     padding: 28px 25px;
@@ -2609,7 +2611,7 @@ section[tabindex]:focus {
     gap: 24px;
   }
   .contact-band h2 {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
   .site-footer {
     padding: 40px 20px 23px;
@@ -2623,7 +2625,7 @@ section[tabindex]:focus {
   }
   .footer-bottom {
     gap: 14px;
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .footer-bottom > span:nth-child(2) {
     order: 3;
@@ -2637,11 +2639,11 @@ section[tabindex]:focus {
     margin-bottom: 30px;
   }
   .page-heading h1 {
-    font-size: 39px;
+    font-size: 2.4375rem;
     margin: 18px 0;
   }
   .page-heading > p {
-    font-size: 15px;
+    font-size: 1rem;
   }
   .work-controls {
     flex-direction: column;
@@ -2651,7 +2653,7 @@ section[tabindex]:focus {
     padding: 12px;
   }
   .search-field input {
-    font-size: 12px;
+    font-size: 0.875rem;
   }
   .context-select {
     align-self: flex-start;
@@ -2661,20 +2663,20 @@ section[tabindex]:focus {
     gap: 6px;
   }
   .filter-chips button {
-    font-size: 10px;
+    font-size: 0.75rem;
     padding: 7px 9px;
   }
   .results-label {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .detail-heading h1 {
-    font-size: 42px;
+    font-size: 2.625rem;
   }
   .detail-subtitle {
-    font-size: 21px;
+    font-size: 1.375rem;
   }
   .detail-heading > p:not(.detail-subtitle) {
-    font-size: 15px;
+    font-size: 1rem;
   }
   .detail-actions {
     margin-bottom: 30px;
@@ -2690,11 +2692,11 @@ section[tabindex]:focus {
     margin-bottom: 28px;
   }
   .case-content h2 {
-    font-size: 25px;
+    font-size: 1.625rem;
   }
   .case-content p,
   .case-content li {
-    font-size: 13px;
+    font-size: 0.9375rem;
   }
   .related-work {
     padding-top: 35px;
@@ -2720,19 +2722,19 @@ section[tabindex]:focus {
     margin-left: 4px;
   }
   .timeline-content h2 {
-    font-size: 25px;
+    font-size: 1.625rem;
   }
   .timeline-content > p {
-    font-size: 13px;
+    font-size: 0.9375rem;
   }
   .timeline-content ul {
-    font-size: 12px;
+    font-size: 0.875rem;
   }
   .architecture-heading {
     gap: 12px;
   }
   .architecture-heading h2 {
-    font-size: 23px;
+    font-size: 1.5rem;
   }
   .architecture-heading .section-number {
     display: none;
@@ -2746,13 +2748,13 @@ section[tabindex]:focus {
   }
   .diagram-panel figcaption {
     padding: 13px;
-    font-size: 11px;
+    font-size: 0.8125rem;
   }
   .diagram-toolbar {
     padding: 10px 12px;
   }
   .diagram-toolbar > span {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .diagram-source {
     padding: 12px;
@@ -2761,7 +2763,7 @@ section[tabindex]:focus {
     padding: 15px;
   }
   .dialog-head h2 {
-    font-size: 20px;
+    font-size: 1.3125rem;
   }
   .dialog-canvas {
     padding: 8px;
@@ -2774,7 +2776,7 @@ section[tabindex]:focus {
     margin-top: 50px;
   }
   .planned-grid > div {
-    font-size: 12px;
+    font-size: 0.875rem;
     padding: 15px;
   }
   .publication-card {
@@ -2786,7 +2788,7 @@ section[tabindex]:focus {
     padding: 0;
   }
   .publication-card h3 {
-    font-size: 23px;
+    font-size: 1.5rem;
   }
   .publication-card .text-link {
     display: flex;
@@ -2802,13 +2804,13 @@ section[tabindex]:focus {
     gap: 15px;
   }
   .talk-row h3 {
-    font-size: 20px;
+    font-size: 1.3125rem;
   }
   .writing-note {
     padding: 25px;
   }
   .writing-note h2 {
-    font-size: 26px;
+    font-size: 1.6875rem;
   }
   .about-grid {
     grid-template-columns: 1fr;
@@ -2818,7 +2820,7 @@ section[tabindex]:focus {
     display: none;
   }
   .about-text p {
-    font-size: 15px;
+    font-size: 1rem;
   }
   .education-grid {
     grid-template-columns: 1fr;
@@ -2833,19 +2835,19 @@ section[tabindex]:focus {
   }
   .skills-section > h2,
   .leadership-section > h2 {
-    font-size: 29px;
+    font-size: 1.8125rem;
   }
   .skills-grid {
     gap: 28px 18px;
   }
   .skills-grid h3 {
-    font-size: 14px;
+    font-size: 1rem;
   }
   .skills-grid .tags > span {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .contact-email > a {
-    font-size: 28px;
+    font-size: 1.8125rem;
     gap: 16px;
     letter-spacing: -1px;
   }
@@ -2895,4 +2897,164 @@ section[tabindex]:focus {
       translate: 0 0;
     }
   }
+}
+
+/* Public project references and captured work previews. */
+.project-public-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.project-public-links a {
+  position: relative;
+  z-index: 2;
+  font-size: 0.875rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 7px 10px;
+  color: var(--accent);
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+}
+.project-public-links a:hover {
+  background: var(--hover);
+}
+.detail-actions {
+  flex-wrap: wrap;
+}
+.media-gallery {
+  margin-block: 32px 45px;
+}
+.media-gallery h2 {
+  margin-bottom: 20px;
+}
+.work-screenshot {
+  margin: 0 0 24px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.screenshot-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--surface-2);
+  position: relative;
+  cursor: zoom-in;
+}
+.screenshot-button img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.screenshot-button > span {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 7px 10px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 0.8125rem;
+}
+.work-screenshot figcaption {
+  padding: 16px 20px;
+}
+.work-screenshot figcaption p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.work-screenshot figcaption a {
+  margin-top: 9px;
+}
+.image-dialog {
+  width: min(1440px, 95vw);
+}
+.image-dialog img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 18px;
+}
+.visual-screenshot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.visual-screenshot .screenshot-type {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: var(--bg);
+  padding: 5px 9px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+.hero-buttons {
+  flex-wrap: wrap;
+}
+.search-field input {
+  min-width: 0;
+}
+.source-note {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 600px) {
+  .hero-location {
+    max-width: none;
+  }
+  .blueprint-top {
+    font-size: 0.6875rem;
+  }
+  .blueprint-top > span:first-child {
+    min-width: 0;
+  }
+  .blueprint-node small,
+  .blueprint-bottom,
+  .connector {
+    font-size: 0.6875rem;
+  }
+  .connector {
+    text-align: center;
+    height: auto;
+    min-height: 44px;
+    padding-block: 10px;
+  }
+  .brand-name {
+    min-width: 0;
+  }
+  .site-header {
+    height: auto;
+    min-height: 73px;
+  }
+  .header-inner {
+    min-height: 73px;
+    padding-block: 10px;
+  }
+  .work-screenshot figcaption {
+    padding: 14px;
+  }
+  .detail-actions > a {
+    width: 100%;
+  }
+  .hero-intro {
+    line-height: 1.7;
+  }
+}
+
+.contact-email > a {
+  overflow-wrap: anywhere;
 }

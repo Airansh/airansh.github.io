@@ -80,17 +80,20 @@ export function CopyButton({ value, label = 'Copy link' }: { value: string; labe
   )
 }
 export function ProjectVisual({ project }: { project: Project }) {
-  if (project.id === 'evalforge')
+  const screenshot = project.screenshots?.[0]
+  if (screenshot)
     return (
-      <div className="project-visual visual-eval">
-        <div className="visual-caption">MODEL EVALUATION / REGRESSION TESTING</div>
+      <div className="project-visual visual-screenshot">
         <img
-          src={`${import.meta.env.BASE_URL}images/evalforge.webp`}
-          alt="EvalForge results interface comparing model evaluation scores"
+          src={`${import.meta.env.BASE_URL}${screenshot.src}`}
+          alt={screenshot.alt}
           loading="lazy"
-          width="800"
-          height="470"
+          width={screenshot.width}
+          height={screenshot.height}
         />
+        <span className="screenshot-type">
+          {project.id === 'evalforge' ? 'Application screenshot' : 'Public website preview'}
+        </span>
       </div>
     )
   const type = project.category
@@ -172,8 +175,10 @@ export function ProjectCard({
   index?: number
 }) {
   return (
-    <article className={`project-card ${visual ? 'with-visual' : ''}`}>
-      {visual && <ProjectVisual project={project} />}
+    <article
+      className={`project-card ${visual || project.screenshots?.length ? 'with-visual' : ''}`}
+    >
+      {(visual || Boolean(project.screenshots?.length)) && <ProjectVisual project={project} />}
       <div className="project-card-body">
         <div className="card-meta">
           <span>
@@ -190,6 +195,15 @@ export function ProjectCard({
         </h3>
         <p>{project.summary}</p>
         <Tags items={project.tech.slice(0, 4)} />
+        {project.links?.length ? (
+          <div className="project-public-links">
+            {project.links.map((link) => (
+              <ExternalLink key={link.url} href={link.url}>
+                {link.kind}
+              </ExternalLink>
+            ))}
+          </div>
+        ) : null}
         <div className="card-footer">
           <span>{project.organization}</span>
           <span>

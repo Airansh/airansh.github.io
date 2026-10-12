@@ -25,6 +25,19 @@ export interface Study {
   outcome: string
   further?: string[]
 }
+export interface ProjectLink {
+  label: string
+  url: string
+  kind: 'Product website' | 'Company website' | 'Client website' | 'Pilot announcement'
+}
+export interface ProjectScreenshot {
+  src: string
+  alt: string
+  caption: string
+  width: number
+  height: number
+  sourceUrl?: string
+}
 export interface Project {
   id: string
   title: string
@@ -39,6 +52,8 @@ export interface Project {
   outcomes: string[]
   sources: Source[]
   github?: string
+  links?: ProjectLink[]
+  screenshots?: ProjectScreenshot[]
   featured?: boolean
   diagram?: string
   study?: Study

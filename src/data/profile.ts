@@ -94,7 +94,8 @@ export const experiences: Experience[] = [
     role: 'Software Engineer',
     period: 'Jul 2021 — Jul 2022',
     location: 'India',
-    summary: 'Healthcare application development, intake automation, and database modernization.',
+    summary:
+      'Healthcare application development for Cranial Technologies, intake automation, and database modernization while at Chenoa.',
     highlights: [
       'Built registration, scheduling, and provider dashboard modules in Angular and Node.js.',
       'Integrated insurance-card OCR, with a reported 70% reduction in processing time.',

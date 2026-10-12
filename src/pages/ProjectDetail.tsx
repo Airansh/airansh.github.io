@@ -1,10 +1,11 @@
 import { lazy, Suspense, useEffect } from 'react'
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Github, Layers3 } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Github, Layers3, Globe } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
 import { projects } from '../data/projects'
 import { diagrams } from '../data/diagrams'
 import { CopyButton, ExternalLink, Eyebrow, ProjectCard, Tags } from '../components/ui'
 import NotFound from './NotFound'
+import { ProjectMedia } from '../components/ProjectMedia'
 const Diagram = lazy(() => import('../components/Diagram'))
 export default function ProjectDetail() {
   const { id } = useParams()
@@ -28,6 +29,7 @@ export default function ProjectDetail() {
   const sections = [
     'Overview',
     'Contributions',
+    ...(project.screenshots?.length ? ['Work previews'] : []),
     ...(study ? ['Requirements', 'Implementation', 'Testing & validation', 'Tradeoffs'] : []),
     ...(diagram ? ['Architecture'] : []),
     'Results',
@@ -51,6 +53,12 @@ export default function ProjectDetail() {
               <Github size={17} /> View repository
             </ExternalLink>
           )}
+          {project.links?.map((link) => (
+            <ExternalLink key={link.url} className="button secondary" href={link.url}>
+              <Globe size={17} aria-hidden="true" />
+              {link.label}
+            </ExternalLink>
+          ))}
           <CopyButton value={window.location.href} />
         </div>
       </header>
@@ -117,19 +125,9 @@ export default function ProjectDetail() {
               ))}
             </ul>
           </section>
-          {project.id === 'evalforge' && (
-            <figure className="case-screenshot">
-              <img
-                src={`${import.meta.env.BASE_URL}images/evalforge.webp`}
-                alt="EvalForge results showing correctness, groundedness, required-fact coverage, and latency across evaluated models"
-                width="800"
-                height="470"
-              />
-              <figcaption>
-                Actual interface from the public EvalForge repository’s documented live runs.
-              </figcaption>
-            </figure>
-          )}
+          {project.screenshots?.length ? (
+            <ProjectMedia images={project.screenshots} title={project.title} />
+          ) : null}
           {study && (
             <>
               <section id="Requirements" tabIndex={-1}>
@@ -204,6 +202,13 @@ export default function ProjectDetail() {
                 </p>
               </div>
             </div>
+          )}
+          {project.id === 'chenoa-healthcare' && (
+            <p className="small-note client-context">
+              Cranial Technologies was the client for the healthcare workflow application developed
+              at Chenoa. Its public website is provided for client context, rather than as a demo of
+              the internal application.
+            </p>
           )}
           <section id="Sources" tabIndex={-1}>
             <h2>Sources & supporting material</h2>

@@ -47,3 +47,14 @@ EvalForge screenshot: `docs/screenshots/live-1-run-a-model-comparison.png` in th
 ## Content to add when available
 
 Approved screenshots for professional systems, first-person lessons learned, specific documented tradeoffs, the precise VR engagement measure, updated manuscript status, verified publisher links, and a refreshed general resume that reconciles older application-demo wording. These are editorial improvements, not blockers for browsing the existing sourced content.
+
+## Additional project references supplied by Vedansh
+
+- Titronics: https://www.titronics.com/
+- Simplex company website: https://simplexmetalprocessors.com/
+- Simplex operations platform: https://simplexsoftware.co.in/
+- Cranial Technologies was the client for the healthcare workflow application developed while working at Chenoa: https://www.cranialtech.com/. The public client site is context, not a demonstration of that internal application.
+- MyCare: https://www.mycare.life/
+- Iowa AI Gateway pilot announcement: https://its.uiowa.edu/news/2026/01/ai-gateway-pilot-what-it-who-its-and-how-join
+
+These links were supplied directly by the author. Public website captures will be labeled separately from application screenshots; internal screens are not inferred from public marketing pages.

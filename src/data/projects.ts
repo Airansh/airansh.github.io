@@ -14,6 +14,13 @@ const repo = (name: string): Source => ({
 export const projects: Project[] = [
   {
     id: 'iowa-ai-gateway',
+    links: [
+      {
+        label: 'Read pilot announcement',
+        url: 'https://its.uiowa.edu/news/2026/01/ai-gateway-pilot-what-it-who-its-and-how-join',
+        kind: 'Pilot announcement',
+      },
+    ],
     title: 'Iowa AI Gateway',
     subtitle: 'Enterprise AI, built around real work.',
     summary:
@@ -100,6 +107,16 @@ export const projects: Project[] = [
   },
   {
     id: 'evalforge',
+    screenshots: [
+      {
+        src: 'images/evalforge.webp',
+        alt: 'EvalForge results comparing model correctness, groundedness, fact coverage, and latency',
+        caption: 'Evaluation results from the public EvalForge repository’s documented live runs.',
+        width: 1200,
+        height: 767,
+        sourceUrl: 'https://github.com/Airansh/LLM-Evaluator',
+      },
+    ],
     title: 'EvalForge',
     subtitle: 'AI evaluation you can trace.',
     summary:
@@ -199,6 +216,13 @@ export const projects: Project[] = [
   },
   {
     id: 'simplex-operations',
+    links: [
+      {
+        label: 'Visit Simplex operations platform',
+        url: 'https://simplexsoftware.co.in/',
+        kind: 'Product website',
+      },
+    ],
     title: 'Simplex operations platform',
     subtitle: 'From manual processes to shared software.',
     summary:
@@ -288,6 +312,7 @@ export const projects: Project[] = [
   },
   {
     id: 'mycare',
+    links: [{ label: 'Visit MyCare', url: 'https://www.mycare.life/', kind: 'Product website' }],
     title: 'MyCare',
     subtitle: 'AI-assisted personal health records.',
     summary:
@@ -307,6 +332,9 @@ export const projects: Project[] = [
   },
   {
     id: 'titronics',
+    links: [
+      { label: 'Visit Titronics', url: 'https://www.titronics.com/', kind: 'Product website' },
+    ],
     title: 'Titronics',
     subtitle: 'Software behind clinical measurement.',
     summary: 'A clinical thermography system used to capture and review patient scan data.',
@@ -402,10 +430,17 @@ export const projects: Project[] = [
   },
   {
     id: 'chenoa-healthcare',
+    links: [
+      {
+        label: 'Visit Cranial Technologies',
+        url: 'https://www.cranialtech.com/',
+        kind: 'Client website',
+      },
+    ],
     title: 'Healthcare workflow application',
     subtitle: 'Registration to provider dashboards.',
     summary:
-      'Patient registration, appointment scheduling, and provider dashboard modules for a healthcare web application.',
+      'Patient registration, appointment scheduling, and provider dashboards for Cranial Technologies, developed while working at Chenoa Information Services.',
     category: 'Healthcare Software',
     context: 'Professional',
     organization: 'Chenoa Information Services',
@@ -416,7 +451,10 @@ export const projects: Project[] = [
       'Delivered improvements through Agile sprints with Jira and Bitbucket.',
     ],
     outcomes: ['45% improved scheduling efficiency reported', '50% improved usability reported'],
-    sources: [resume],
+    sources: [
+      resume,
+      { label: 'Client context supplied by Vedansh', url: 'https://www.cranialtech.com/' },
+    ],
   },
   {
     id: 'insurance-ocr',
@@ -663,6 +701,13 @@ export const projects: Project[] = [
   },
   {
     id: 'simplex-website',
+    links: [
+      {
+        label: 'Visit Simplex Metal Processors',
+        url: 'https://simplexmetalprocessors.com/',
+        kind: 'Company website',
+      },
+    ],
     title: 'Simplex company website',
     subtitle: 'An interactive view of manufacturing.',
     summary:

@@ -1,0 +1,25 @@
+name: Capture public project previews
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/capture-public-previews.mjs
+      - name: Save captures to a review branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git checkout -b "work-previews-${GITHUB_RUN_ID}"
+          git add public/images/work docs/work-preview-captures.json
+          git commit -m 'Capture public project website previews'
+          git push origin "HEAD:work-previews-${GITHUB_RUN_ID}"

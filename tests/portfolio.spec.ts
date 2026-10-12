@@ -141,3 +141,31 @@ test('no failed local assets or browser exceptions in the main journey', async (
   await expect(page.getByRole('heading', { name: 'Results & impact' })).toBeVisible()
   expect(errors).toEqual([])
 })
+
+test('public project links and image previews remain separate from case-study navigation', async ({
+  page,
+}) => {
+  for (const project of projects.filter((p) => p.links?.length)) {
+    await page.goto(`/#/work/${project.id}`)
+    for (const link of project.links!) {
+      const action = page.getByRole('link', { name: link.label })
+      await expect(action).toHaveAttribute('href', link.url)
+      await expect(action).toHaveAttribute('target', '_blank')
+    }
+  }
+  await page.goto('/#/work/chenoa-healthcare')
+  await expect(page.locator('.client-context')).toContainText('Cranial Technologies was the client')
+  await page.goto('/#/work/evalforge')
+  const expand = page.getByRole('button', { name: 'Expand screenshot: EvalForge' })
+  await expand.click()
+  const dialog = page.getByRole('dialog', { name: 'EvalForge screenshot' })
+  await expect(dialog).toBeVisible()
+  await expect(
+    dialog.getByRole('img', {
+      name: 'EvalForge results comparing model correctness, groundedness, fact coverage, and latency',
+    }),
+  ).toBeVisible()
+  await page.keyboard.press('Escape')
+  await expect(dialog).not.toBeVisible()
+  await expect(expand).toBeFocused()
+})

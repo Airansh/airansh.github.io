@@ -60,3 +60,9 @@ Articles currently link to externally published ITS writing. No unpublished arti
 Replace the general resume at the existing public path to keep download links stable. Use one current general resume rather than an application-specific version. Update contact information in `profile`; never place credentials in content files.
 
 Use approved screenshots. Store optimized images in `public/images`, include useful alt text and dimensions, and credit the source. Do not publish patient data, internal interfaces, or confidential designs.
+
+## Project links and screenshots
+
+Add `links` with a descriptive label, URL, and kind (`Product website`, `Company website`, `Client website`, or `Pilot announcement`). Links appear on cards and detail pages independently of internal case-study navigation. Label a client website as client context rather than as a demo of an internal application.
+
+Add `screenshots` with a local `src`, useful `alt`, accurate `caption`, original `width`/`height`, and optional `sourceUrl`. The same optimized image supplies a card preview and the expandable detail image. Capture only public pages or author-approved material; never sign into a proprietary system or stage fake product screens. A public marketing-page capture must be labeled as such.
