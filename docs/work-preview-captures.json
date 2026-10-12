@@ -2,57 +2,13 @@
   {
     "projectId": "simplex-operations",
     "url": "https://simplexsoftware.co.in/",
-    "status": "unavailable",
-    "error": "Error: Site returned an access challenge or incomplete page"
-  },
-  {
-    "projectId": "chenoa-healthcare",
-    "url": "https://www.cranialtech.com/",
-    "status": "unavailable",
-    "error": "Error: HTTP 403"
-  },
-  {
-    "projectId": "simplex-website",
-    "url": "https://simplexmetalprocessors.com/",
-    "src": "images/work/simplex-website.jpg",
-    "title": "Simplex Metal Processors – Complicated Made Simple",
-    "finalUrl": "https://simplexmetalprocessors.com/",
+    "src": "images/work/simplex-operations.jpg",
+    "title": "Simplex: Applications",
+    "bodyTextLength": 45,
+    "finalUrl": "https://simplexsoftware.co.in/",
     "width": 1440,
     "height": 1000,
-    "capturedAt": "2026-10-12T06:01:55.510Z",
-    "status": "captured"
-  },
-  {
-    "projectId": "mycare",
-    "url": "https://www.mycare.life/",
-    "src": "images/work/mycare.jpg",
-    "title": "MyCare — Health Journaling",
-    "finalUrl": "https://www.mycare.life/",
-    "width": 1440,
-    "height": 1000,
-    "capturedAt": "2026-10-12T06:01:55.598Z",
-    "status": "captured"
-  },
-  {
-    "projectId": "iowa-ai-gateway",
-    "url": "https://its.uiowa.edu/news/2026/01/ai-gateway-pilot-what-it-who-its-and-how-join",
-    "src": "images/work/iowa-ai-gateway.jpg",
-    "title": "AI Gateway pilot: what it is, who it’s for, and how to join | Information Technology Services - The University of Iowa",
-    "finalUrl": "https://its.uiowa.edu/news/2026/01/ai-gateway-pilot-what-it-who-its-and-how-join",
-    "width": 1440,
-    "height": 1000,
-    "capturedAt": "2026-10-12T06:01:57.006Z",
-    "status": "captured"
-  },
-  {
-    "projectId": "titronics",
-    "url": "https://www.titronics.com/",
-    "src": "images/work/titronics.jpg",
-    "title": "Titronics — Thermographic & Range-of-Motion Scanners for Chiropractic",
-    "finalUrl": "https://www.titronics.com/",
-    "width": 1440,
-    "height": 1000,
-    "capturedAt": "2026-10-12T06:02:01.288Z",
+    "capturedAt": "2026-10-12T06:09:12.899Z",
     "status": "captured"
   }
 ]
