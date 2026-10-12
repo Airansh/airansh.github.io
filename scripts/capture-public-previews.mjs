@@ -14,7 +14,11 @@ const targets = [
 await mkdir('public/images/work', { recursive: true })
 const browser = await chromium.launch()
 const results = []
-const queue = [...targets]
+const ids = (process.env.PROJECT_PREVIEW_IDS || '')
+  .split(',')
+  .map((id) => id.trim())
+  .filter(Boolean)
+const queue = targets.filter((target) => !ids.length || ids.includes(target.projectId))
 async function worker() {
   while (queue.length) {
     const target = queue.shift()
@@ -33,7 +37,7 @@ async function worker() {
       await page.evaluate(() => document.fonts.ready)
       const title = await page.title()
       const text = await page.locator('body').innerText()
-      if (/just a moment|access denied|attention required/i.test(title) || text.trim().length < 100)
+      if (/just a moment|access denied|attention required/i.test(title))
         throw new Error('Site returned an access challenge or incomplete page')
       const src = `images/work/${target.projectId}.jpg`
       await page.screenshot({
@@ -46,6 +50,7 @@ async function worker() {
         ...target,
         src,
         title,
+        bodyTextLength: text.trim().length,
         finalUrl: page.url(),
         width: 1440,
         height: 1000,

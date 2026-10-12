@@ -14,6 +14,18 @@ const repo = (name: string): Source => ({
 export const projects: Project[] = [
   {
     id: 'iowa-ai-gateway',
+    screenshots: [
+      {
+        src: 'images/work/iowa-ai-gateway.jpg',
+        alt: 'University of Iowa ITS AI Gateway pilot announcement, written by Vedansh Airen',
+        caption:
+          'Official Iowa AI Gateway pilot announcement, written by Vedansh Airen. The LibreChat workspace uses university SSO.',
+        width: 1440,
+        height: 1000,
+        sourceUrl:
+          'https://its.uiowa.edu/news/2026/01/ai-gateway-pilot-what-it-who-its-and-how-join',
+      },
+    ],
     links: [
       {
         label: 'Read pilot announcement',
@@ -312,6 +324,17 @@ export const projects: Project[] = [
   },
   {
     id: 'mycare',
+    screenshots: [
+      {
+        src: 'images/work/mycare.jpg',
+        alt: 'MyCare public website introducing health journaling for patients and caregivers',
+        caption:
+          'Public MyCare product website, introducing health journaling for patients and caregivers.',
+        width: 1440,
+        height: 1000,
+        sourceUrl: 'https://www.mycare.life/',
+      },
+    ],
     links: [{ label: 'Visit MyCare', url: 'https://www.mycare.life/', kind: 'Product website' }],
     title: 'MyCare',
     subtitle: 'AI-assisted personal health records.',
@@ -332,6 +355,17 @@ export const projects: Project[] = [
   },
   {
     id: 'titronics',
+    screenshots: [
+      {
+        src: 'images/work/titronics.jpg',
+        alt: 'Titronics public website showing thermographic scanning products',
+        caption:
+          'Public Titronics product website, providing context for the clinical measurement software I maintained.',
+        width: 1440,
+        height: 1000,
+        sourceUrl: 'https://www.titronics.com/',
+      },
+    ],
     links: [
       { label: 'Visit Titronics', url: 'https://www.titronics.com/', kind: 'Product website' },
     ],
@@ -701,6 +735,17 @@ export const projects: Project[] = [
   },
   {
     id: 'simplex-website',
+    screenshots: [
+      {
+        src: 'images/work/simplex-website.jpg',
+        alt: 'Simplex Metal Processors company website with manufacturing imagery and navigation',
+        caption:
+          'The public Simplex Metal Processors company website developed for the business, with its manufacturing-focused homepage.',
+        width: 1440,
+        height: 1000,
+        sourceUrl: 'https://simplexmetalprocessors.com/',
+      },
+    ],
     links: [
       {
         label: 'Visit Simplex Metal Processors',

@@ -1,6 +1,11 @@
 name: Capture public project previews
 on:
   workflow_dispatch:
+    inputs:
+      project_ids:
+        description: 'Optional comma-separated project IDs; empty captures all public pages'
+        required: false
+        default: ''
 permissions:
   contents: write
 jobs:
@@ -15,6 +20,8 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: node scripts/capture-public-previews.mjs
+        env:
+          PROJECT_PREVIEW_IDS: ${{ inputs.project_ids }}
       - name: Save captures to a review branch
         run: |
           git config user.name 'github-actions[bot]'

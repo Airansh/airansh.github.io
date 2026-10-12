@@ -169,3 +169,15 @@ test('public project links and image previews remain separate from case-study na
   await expect(dialog).not.toBeVisible()
   await expect(expand).toBeFocused()
 })
+
+test('reading text scales to 200% without horizontal overflow on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  for (const route of ['/', '/#/work/chenoa-healthcare', '/#/about', '/#/contact']) {
+    await page.goto(route)
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+    await page.evaluate(() => {
+      document.documentElement.style.fontSize = '200%'
+    })
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  }
+})
