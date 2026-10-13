@@ -12,7 +12,7 @@ export const diagrams: DiagramDefinition[] = [
     id: 'evalforge',
     title: 'Multi-LLM evaluation platform',
     description:
-      'A public-source view of EvalForge’s application, evaluation, and persistence boundaries.',
+      'EvalForge’s interface, evaluation runner, model providers, and persistence boundaries.',
     kind: 'Component & deployment',
     project: 'evalforge',
     source: 'EvalForge README and deployment documentation',
@@ -46,7 +46,7 @@ export const diagrams: DiagramDefinition[] = [
     id: 'voting',
     title: 'Voting eligibility & transaction',
     description:
-      'A conceptual sequence of the server checks and transactional recording documented in the public repository.',
+      'A sequence overview of server-side eligibility checks and transactional vote recording.',
     kind: 'Sequence',
     project: 'voting-application',
     source: 'Voting application README; conceptual sequence',
@@ -69,10 +69,10 @@ export const diagrams: DiagramDefinition[] = [
     id: 'automation',
     title: 'Training certificate workflow',
     description:
-      'Documented processing stages, shown as a workflow rather than an internal deployment diagram.',
+      'Attendance and grade data flow through validation, certificate generation, and delivery.',
     kind: 'Data flow',
     project: 'hawkai-automation',
-    source: 'Professional resume; high-level workflow',
+    source: 'HawkAI certificate pipeline — workflow overview',
     code: `flowchart LR
     A[Attendance and grade data] --> B[Clean and validate]
     B --> C[Generate certificates]
@@ -85,10 +85,10 @@ export const diagrams: DiagramDefinition[] = [
     id: 'vr',
     title: 'AI & physiological input in VR',
     description:
-      'Documented components of the research application. Exact timing and study data-storage details are not represented.',
+      'A component overview connecting the VR classroom, AI integration, physiological sensor, and study-data analysis.',
     kind: 'Component',
     project: 'vr-classroom',
-    source: 'Research resume; conceptual component view',
+    source: 'AI-guided VR classroom — component overview',
     code: `flowchart TB
     Sensor[HeartMath emWave sensor] --> VR[Unity and C# VR classroom]
     AI[OpenAI API] <--> VR

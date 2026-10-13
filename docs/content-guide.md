@@ -31,7 +31,7 @@ This is an authoring example, not a completed project. Delete example links befo
 
 ## Extend a case study
 
-The `Study` type contains problem, role, requirements, implementation, validation, tradeoffs, outcome, and optional further-documentation fields. Use `requirements` for supported functional requirements and constraints. Explain the available performance, security, reliability, deployment, and testing evidence within the relevant sections. Do not equate frontend role routing with backend authorization, or a manifest with a verified cluster deployment.
+The `Study` type contains problem, role, requirements, implementation, validation, tradeoffs, outcome, optional public next steps (`nextSteps`), and internal authoring notes (`further`). Use `requirements` for supported functional requirements and constraints. Explain the available performance, security, reliability, deployment, and testing evidence within the relevant sections. Do not equate frontend role routing with backend authorization, or a manifest with a verified cluster deployment.
 
 For future detailed designs, use [the full case-study outline](case-study-template.md). Keep unknown material in authoring notes until supported. The UI can display a concise documentation note when the absence is useful context.
 
@@ -66,3 +66,7 @@ Use approved screenshots. Store optimized images in `public/images`, include use
 Add `links` with a descriptive label, URL, and kind (`Product website`, `Company website`, `Client website`, or `Pilot announcement`). Links appear on cards and detail pages independently of internal case-study navigation. Label a client website as client context rather than as a demo of an internal application.
 
 Add `screenshots` with a local `src`, useful `alt`, accurate `caption`, original `width`/`height`, and optional `sourceUrl`. The same optimized image supplies a card preview and the expandable detail image. Capture only public pages or author-approved material; never sign into a proprietary system or stage fake product screens. A public marketing-page capture must be labeled as such.
+
+## Public writing style
+
+Write project narratives as a direct account of the work, using first person for personal contributions and precise descriptions of system behavior. Keep source provenance and authoring notes in the content records and documentation rather than rendering phrases such as “the resume reports” or “the supplied materials.” Retain real limitations, team attribution, test scope, and manuscript status. Public project pages show relevant external links; private source records and generic authoring placeholders stay out of the UI.

@@ -26,6 +26,9 @@ export default function ProjectDetail() {
         (p.organization === project.organization || p.category === project.category),
     )
     .slice(0, 3)
+  const publicLinks = project.sources.filter(
+    (source) => source.url && !project.links?.some((link) => link.url === source.url),
+  )
   const sections = [
     'Overview',
     'Contributions',
@@ -33,7 +36,7 @@ export default function ProjectDetail() {
     ...(study ? ['Requirements', 'Implementation', 'Testing & validation', 'Tradeoffs'] : []),
     ...(diagram ? ['Architecture'] : []),
     'Results',
-    'Sources',
+    ...(publicLinks.length ? ['Project links'] : []),
   ]
   return (
     <div className="container page detail-page">
@@ -179,29 +182,16 @@ export default function ProjectDetail() {
               ))}
             </div>
           </section>
-          {study?.further && (
+          {study?.nextSteps && (
             <section className="documentation-note">
               <Layers3 size={22} />
               <div>
-                <h3>Further documentation</h3>
-                {study.further.map((f) => (
+                <h3>Potential improvements</h3>
+                {study.nextSteps.map((f) => (
                   <p key={f}>{f}</p>
                 ))}
               </div>
             </section>
-          )}
-          {!study && (
-            <div className="documentation-note">
-              <Layers3 size={22} />
-              <div>
-                <h3>A focused project overview</h3>
-                <p>
-                  This entry covers the contributions supported by the available materials. Detailed
-                  architecture, implementation decisions, and test reports can be added as
-                  supporting documentation becomes available.
-                </p>
-              </div>
-            </div>
           )}
           {project.id === 'chenoa-healthcare' && (
             <p className="small-note client-context">
@@ -210,30 +200,20 @@ export default function ProjectDetail() {
               the internal application.
             </p>
           )}
-          <section id="Sources" tabIndex={-1}>
-            <h2>Sources & supporting material</h2>
-            <ul className="source-list">
-              {project.sources.map((s) => (
-                <li key={s.label}>
-                  {s.url ? (
-                    <ExternalLink className="text-link" href={s.url}>
-                      {s.label}
+          {publicLinks.length > 0 && (
+            <section id="Project links" tabIndex={-1}>
+              <h2>Project links</h2>
+              <ul className="source-list">
+                {publicLinks.map((link) => (
+                  <li key={link.url}>
+                    <ExternalLink className="text-link" href={link.url!}>
+                      {link.label}
                     </ExternalLink>
-                  ) : (
-                    <span>
-                      {s.label} <small>Supplied by Vedansh</small>
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-            {project.context === 'Professional' && (
-              <p className="small-note">
-                Professional work is described at the scope supported by the supplied resume.
-                Internal code and confidential implementation details are not included.
-              </p>
-            )}
-          </section>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </div>
       </div>
       {related.length > 0 && (

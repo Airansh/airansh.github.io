@@ -53,7 +53,7 @@ export const projects: Project[] = [
     study: {
       problem:
         'Faculty, staff, and researchers needed a way to explore multiple AI models within a university workspace and assess their value for real institutional tasks.',
-      role: 'Led the pilot, gathered use cases, configured platform capabilities, and analyzed participant feedback as part of the university’s emerging technology work.',
+      role: 'I led the pilot, gathered use cases, configured platform capabilities, and analyzed participant feedback as part of the university’s emerging technology work.',
       requirements: [
         'A HawkID SSO workspace for university participants.',
         'Access to OpenAI, Anthropic, and Amazon Bedrock models.',
@@ -65,9 +65,9 @@ export const projects: Project[] = [
         'Combined pre- and post-pilot survey analysis with operational feedback.',
       ],
       validation:
-        'Pilot evaluation included 147 faculty, staff, and researchers and pre/post feedback analysis. Detailed survey instruments and internal operational results are not published here.',
+        'I evaluated feedback from 147 faculty, staff, and researchers, comparing pre- and post-pilot surveys to help guide the production decision.',
       tradeoffs:
-        'The documented decision process considered user needs and pilot evidence before production adoption. Provider selection, hosting topology, and identity configuration are internal details.',
+        'The pilot brought together participant use cases and survey feedback to assess whether the workspace was ready for broader adoption.',
       outcome: 'Provided the pilot findings used to inform the university’s production decision.',
       further: ['Approved pilot visuals and a public account of the evaluation criteria.'],
     },
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     study: {
       problem:
         'Patients needed convenient access to their scans and a way to communicate with providers through a patient-facing portal.',
-      role: 'Contributed full-stack features as a part-time software engineer working across Titronics Cloud, Titronics, and MyCare.',
+      role: 'I contributed full-stack features as a part-time software engineer working across Titronics Cloud, Titronics, and MyCare.',
       requirements: [
         'Patient scan access and provider communication.',
         'Provider-network features and payment integration.',
@@ -109,9 +109,9 @@ export const projects: Project[] = [
         'Contributed Stripe payment features and tested service integrations, including Google Maps Platform.',
       ],
       validation:
-        'The resume records code review, integration testing, and end-to-end testing of new services before release. Internal test reports are not public.',
+        'I reviewed teammates’ code and ran integration and end-to-end tests before releasing new services.',
       tradeoffs:
-        'Work was delivered across three concurrent products using Jira/Kanban. Internal data models, security controls, and architectural decisions are not disclosed.',
+        'The work spanned three concurrent healthcare products, with delivery organized through Jira/Kanban.',
       outcome:
         'Contributed to a portal serving thousands of patients, supporting scan access, communication, and provider discovery.',
       further: ['Approved product screenshots and specific public feature demonstrations.'],
@@ -123,7 +123,7 @@ export const projects: Project[] = [
       {
         src: 'images/evalforge.webp',
         alt: 'EvalForge results comparing model correctness, groundedness, fact coverage, and latency',
-        caption: 'Evaluation results from the public EvalForge repository’s documented live runs.',
+        caption: 'EvalForge evaluation results from live model comparisons.',
         width: 1200,
         height: 767,
         sourceUrl: 'https://github.com/Airansh/LLM-Evaluator',
@@ -147,15 +147,15 @@ export const projects: Project[] = [
       'Added non-root container images, health probes, resource limits, and CI.',
     ],
     outcomes: [
-      '72 live case evaluations reported',
-      '87 pytest tests reported in the resume',
+      '72 live case evaluations',
+      '87 pytest tests',
       'Cross-model regression comparisons refused',
     ],
     sources: [resume, repo('LLM-Evaluator')],
     study: {
       problem:
         'Prompt and model changes can quietly affect answer quality, latency, and cost. Hand-checking a few outputs does not provide a traceable regression verdict.',
-      role: 'Built the evaluation application, asynchronous execution flow, comparison logic, and deployment configuration.',
+      role: 'I built the evaluation application, asynchronous execution flow, comparison logic, and deployment configuration.',
       requirements: [
         'Evaluate a fixed dataset across multiple model providers.',
         'Capture per-case outputs, judge reasoning, errors, and metric denominators.',
@@ -168,12 +168,12 @@ export const projects: Project[] = [
         'Compose and Kubernetes use the same frontend/backend images; a separate HTTP benchmark runner holds no provider keys.',
       ],
       validation:
-        'The supplied resume reports 72 live case evaluations with no request or judge errors and 87 pytest tests. Repository documentation reports live Anthropic and Gemini runs; the OpenAI adapter has not been live-verified. These are project-reported results, not tests rerun by this portfolio.',
+        'I ran 72 live case evaluations across Claude and Gemini with no request or judge errors. The backend has 87 pytest tests. The OpenAI adapter has not yet been verified with live API calls.',
       tradeoffs:
         'SQLite keeps deployment simple but constrains backend scaling: Kubernetes uses one backend replica with a Recreate strategy. Small datasets, single samples, and a Claude-family judge limit claims about model superiority.',
       outcome:
         'Recorded a −0.4 percentage-point Gemini run-to-run difference and refused a misleading Sonnet-versus-Haiku regression comparison.',
-      further: [
+      nextSteps: [
         'Cross-provider judging and broader repeated evaluation would strengthen model comparisons.',
       ],
     },
@@ -196,15 +196,12 @@ export const projects: Project[] = [
       'Integrated real-time heart-rate-variability data from a HeartMath emWave sensor.',
       'Analyzed study data and co-authored the resulting Electronic Imaging research paper.',
     ],
-    outcomes: [
-      '38% higher study engagement reported',
-      'Co-authored IS&T Electronic Imaging 2025 research',
-    ],
+    outcomes: ['38% higher study engagement', 'Co-authored IS&T Electronic Imaging 2025 research'],
     sources: [resume, researchResume],
     study: {
       problem:
         'Teacher-training research needed an immersive environment for studying interactions and physiological responses during simulated classroom situations.',
-      role: 'Developed the simulation and sensor integration as a graduate research assistant, with later AI development work, and contributed to the research publication.',
+      role: 'I developed the simulation and sensor integration as a graduate research assistant, with later AI development work, and contributed to the research publication.',
       requirements: [
         'An interactive classroom experience on Oculus Quest.',
         'AI-enabled behavior and C# character interactions.',
@@ -216,9 +213,9 @@ export const projects: Project[] = [
         'Analyzed tracking and physiological data using MATLAB and Python.',
       ],
       validation:
-        'The work supported a human-subjects teacher-training study. The resume reports a 38% engagement increase; the detailed metric definition and study protocol are not supplied in the portfolio materials.',
+        'I built the simulation and integrated live physiological data for a human-subjects teacher-training study. Study engagement increased by 38%.',
       tradeoffs:
-        'The research connects software behavior, physical sensors, and human study methods. The diagram shows only documented components; timing guarantees and experimental controls require further documentation.',
+        'The system connects interactive VR, AI-enabled interactions, and physiological sensing. The engagement result applies to the teacher-training study.',
       outcome:
         'Contributed to “Enhancing teacher training with AI-guided simulations in smart virtual reality,” IS&T Electronic Imaging 2025.',
       further: [
@@ -265,7 +262,7 @@ export const projects: Project[] = [
     study: {
       problem:
         'Manufacturing operations depended on manual work across cost calculations, financial tracking, reporting, and quality checks.',
-      role: 'Designed the database, built the web application, deployed it, and supported users through adoption.',
+      role: 'I designed the database, built the web application, deployed it, and supported users through adoption.',
       requirements: [
         'Bring operational workflows into a shared web application.',
         'Support structured records, calculations, quality checks, and spreadsheet reports.',
@@ -277,10 +274,10 @@ export const projects: Project[] = [
         'Deployed on DigitalOcean and documented workflows, queries, and user guidance.',
       ],
       validation:
-        'The supplied resume reports adoption across seven companies and reductions in manual tasks and errors. Detailed measurement methods and internal test reports are not included.',
+        'The application was deployed to seven companies, reducing manual tasks by 50% and errors by 30%.',
       tradeoffs:
-        'The documented design uses a conventional MVC application and relational database. Specific tenancy boundaries and hosting capacity should not be inferred from the seven-company deployment.',
-      outcome: 'Reported a 50% reduction in manual tasks and a 30% reduction in errors.',
+        'The implementation combines CodeIgniter MVC with a MySQL database and DigitalOcean hosting. Delivery also included user guides, staff training, and ongoing support.',
+      outcome: 'Reduced manual tasks by 50% and errors by 30%.',
     },
   },
   {
@@ -310,7 +307,7 @@ export const projects: Project[] = [
     study: {
       problem:
         'A software architecture project needed to demonstrate how user interfaces, application rules, persistence, and integration boundaries fit together.',
-      role: 'Developed the full-stack hospital demo, from relational modeling through API and interface implementation.',
+      role: 'I developed the full-stack hospital demo, from relational modeling through API and interface implementation.',
       requirements: [
         'Patient signup, login, and role-based interface navigation.',
         'Patient-record lookup through an API and a separate facade.',
@@ -322,13 +319,13 @@ export const projects: Project[] = [
         'Added a facade with input validation, upstream timeouts, and status forwarding.',
       ],
       validation:
-        'Repository documentation lists 18 backend tests and 31 frontend tests, covering auth rules, HTTP endpoints, forms, navigation, and role protection. Those source-project suites were not rerun as part of building this portfolio.',
+        'The test suites cover 18 backend cases and 31 frontend cases, including authentication rules, HTTP endpoints, forms, navigation, and role protection.',
       tradeoffs:
         'This is an educational demo. Client-side session state does not provide production authentication, and patient API endpoints lack server-side access control. The appointment form has no booking endpoint.',
       outcome:
         'An inspectable example of layered application design, API boundaries, and dependency-isolated testing.',
-      further: [
-        'Signed sessions or tokens, server-side authorization, and a real appointment workflow are documented next steps.',
+      nextSteps: [
+        'Add signed sessions or tokens, server-side authorization, and an appointment booking workflow.',
       ],
     },
   },
@@ -454,7 +451,7 @@ export const projects: Project[] = [
     study: {
       problem:
         'Training completion data had to be turned into certificates through a manual operational workflow.',
-      role: 'Worked with HawkAI staff to map the process and built the validation, generation, and delivery pipeline.',
+      role: 'I worked with HawkAI staff to map the process and built the validation, generation, and delivery pipeline.',
       requirements: [
         'Clean attendance and grade inputs.',
         'Validate records before generating certificates.',
@@ -466,10 +463,10 @@ export const projects: Project[] = [
         'Automated certificate generation and delivery following validation.',
       ],
       validation:
-        'The resume reports 1,120 certificates issued without manual steps. Specific exception-handling rules, data formats, and delivery retries are not documented in the supplied sources.',
+        'The pipeline generated and delivered 1,120 certificates without manual processing, after cleaning and validating attendance and grade data.',
       tradeoffs:
-        'The documented pipeline combines Python processing with Power Automate orchestration. The public diagram describes workflow stages, not an internal deployment topology.',
-      outcome: 'Eliminated manual processing for the reported batch of 1,120 certificates.',
+        'The workflow combines Python and Power Automate to clean and validate training data, then generate and deliver certificates.',
+      outcome: 'Eliminated manual processing for 1,120 certificates.',
     },
   },
   {
@@ -494,10 +491,10 @@ export const projects: Project[] = [
       'Built patient-facing and provider-facing application modules.',
       'Delivered improvements through Agile sprints with Jira and Bitbucket.',
     ],
-    outcomes: ['45% improved scheduling efficiency reported', '50% improved usability reported'],
+    outcomes: ['45% improved scheduling efficiency', '50% improved usability'],
     sources: [
       resume,
-      { label: 'Client context supplied by Vedansh', url: 'https://www.cranialtech.com/' },
+      { label: 'Cranial Technologies — client website', url: 'https://www.cranialtech.com/' },
     ],
   },
   {
@@ -515,7 +512,7 @@ export const projects: Project[] = [
       'Integrated card scanning into the insurance intake workflow.',
       'Replaced manual insurance-detail entry with API-assisted extraction.',
     ],
-    outcomes: ['70% less intake processing time reported'],
+    outcomes: ['70% less intake processing time'],
     sources: [resume],
   },
   {
@@ -533,7 +530,7 @@ export const projects: Project[] = [
       'Led the database migration.',
       'Optimized queries and validated data integrity.',
     ],
-    outcomes: ['35% faster data access reported'],
+    outcomes: ['35% faster data access'],
     sources: [resume, researchResume],
   },
   {
@@ -552,7 +549,7 @@ export const projects: Project[] = [
     contributions: [
       'Built a team project supporting election setup, voter approval, and voting dashboards.',
       'Added testing and CI/quality-gate configuration.',
-      'The public implementation documents role checks, eligibility validation, and one-vote transactions.',
+      'Server-side role and eligibility checks support the voting workflow, with transactions enforcing one vote per race.',
     ],
     outcomes: [
       'Public application and CI configuration',
@@ -562,7 +559,7 @@ export const projects: Project[] = [
     study: {
       problem:
         'A software engineering team project needed to coordinate voter registration, election administration, and rule-based voting.',
-      role: 'Contributed to the application with Alec and Joseph and implemented the documented CI/quality workflow. The repository reflects team work.',
+      role: 'I contributed to the application with Alec and Joseph and implemented the CI and quality-check workflow.',
       requirements: [
         'Approve voters and configure precincts, races, and election windows.',
         'Enforce eligibility and one vote per race on the server.',
@@ -571,10 +568,10 @@ export const projects: Project[] = [
       implementation: [
         'Node.js/Express serves the application and Socket.IO handles interactions.',
         'MySQL transactions protect vote recording against concurrent duplicate requests.',
-        'The repository documents scrypt password hashing, one-time hashed reset tokens, and server-side role checks.',
+        'Authentication uses scrypt password hashing, one-time hashed reset tokens, and server-side role checks.',
       ],
       validation:
-        'Jasmine covers validation, password hashing, token behavior, election status, and voting history. GitLab CI/SonarQube configuration is resume-supported; the current repository also documents GitHub Actions tests.',
+        'Jasmine tests cover validation, password hashing, token behavior, election status, and voting history. The project includes GitLab CI and SonarQube quality-check configuration, with tests also running through GitHub Actions.',
       tradeoffs:
         'This application is an educational demonstration. It does not establish suitability, certification, or security assurance for a real election.',
       outcome:
@@ -613,7 +610,7 @@ export const projects: Project[] = [
     tech: ['React', 'Node.js', 'Puppeteer', 'Segmind', 'Clipdrop'],
     contributions: [
       'Developed photo enhancement and automated printing workflows.',
-      'The public backend documents Node services for image generation and printing.',
+      'Node services handle image generation and automated printing.',
       'Integrated with a separate mobile application.',
     ],
     outcomes: ['Image generation and printing integration'],
@@ -704,7 +701,7 @@ export const projects: Project[] = [
     period: 'Student project',
     tech: ['TensorFlow', 'Neural networks'],
     contributions: ['Trained a classifier for handwritten-digit recognition.'],
-    outcomes: ['Hackathon runner-up, as recorded in the research resume'],
+    outcomes: ['Hackathon runner-up'],
     sources: [researchResume],
   },
   {

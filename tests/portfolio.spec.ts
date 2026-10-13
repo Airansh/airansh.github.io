@@ -20,11 +20,14 @@ test('search and category/context filters compose and survive refresh', async ({
   await expect(page.locator('.project-card')).toHaveCount(27)
 })
 
-test('all project routes load with source material and correct titles', async ({ page }) => {
+test('all project routes load with direct project copy and correct titles', async ({ page }) => {
   for (const project of projects) {
     await page.goto(`/#/work/${project.id}`)
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(project.title)
-    await expect(page.locator('#Sources')).toBeVisible()
+    await expect(page.locator('body')).not.toContainText('Supplied by Vedansh')
+    expect(await page.locator('main').innerText()).not.toMatch(
+      /resume[- ](?:records|reports|shows|states|lists|listed|supported)|supplied (?:resume|materials)|by this portfolio|during site preparation|supported by the available materials/i,
+    )
     await expect(page).toHaveTitle(`${project.title} — Vedansh Airen`)
   }
   await page.reload()
@@ -112,6 +115,9 @@ for (const theme of ['dark', 'light']) {
       await page.addInitScript((value) => localStorage.setItem('va-theme', value), theme)
       await page.goto(route)
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+      expect(await page.locator('main').innerText()).not.toMatch(
+        /resume[- ](?:records|reports|shows|states|lists|listed|supported)|supplied (?:resume|materials)|by this portfolio|during site preparation|supported by the available materials/i,
+      )
       if (route.includes('architecture') || route.includes('evalforge'))
         await expect(page.locator('.diagram-render svg').first()).toBeVisible()
       const scan = await new AxeBuilder({ page })

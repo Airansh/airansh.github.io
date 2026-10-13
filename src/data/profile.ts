@@ -99,7 +99,7 @@ export const experiences: Experience[] = [
       'Healthcare application development for Cranial Technologies, intake automation, and database modernization while at Chenoa.',
     highlights: [
       'Built registration, scheduling, and provider dashboard modules in Angular and Node.js.',
-      'Integrated insurance-card OCR, with a reported 70% reduction in processing time.',
+      'Integrated insurance-card OCR, with a 70% reduction in processing time.',
       'Led a SQL Server migration with integrity validation and query optimization.',
     ],
     projects: ['chenoa-healthcare', 'insurance-ocr', 'leadquest-migration'],
@@ -227,7 +227,7 @@ export const publications: Publication[] = [
     description:
       'Research connecting immersive teacher training, AI-guided simulation, and physiological monitoring.',
     url: 'https://www.imaging.org/IST/IST/Conferences/EI/EI2025/Conference/C_ERVR.aspx',
-    status: 'Resume-listed publication',
+    status: 'Published',
   },
   {
     id: 'iot-paper',
@@ -236,18 +236,16 @@ export const publications: Publication[] = [
     year: '2020',
     authors: 'V. Airen, S. Jain, S. Patel, V. Bhargav, N. Shah, P. Jain',
     venue: 'Journal of Information and Computational Science · 10(12), 660–665',
-    description:
-      'A review of the multidisciplinary nature of the Internet of Things. Citation supplied in the research resume.',
-    status: 'Resume-listed publication',
+    description: 'A review of the multidisciplinary nature of the Internet of Things.',
+    status: 'Published',
   },
   {
     id: 'vr-manuscript',
     title: 'A preliminary study of evaluating social-emotional competencies in virtual reality',
     type: 'Manuscript',
-    year: 'Status supplied in resume',
+    year: '',
     venue: 'Submitted to Journal of Behavioral Education',
-    description:
-      'Co-authored research on evaluating social-emotional competencies using VR. Acceptance or publication has not been established.',
+    description: 'Co-authored research on evaluating social-emotional competencies using VR.',
     status: 'Submitted manuscript',
   },
   {

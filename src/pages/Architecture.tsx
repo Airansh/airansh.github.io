@@ -9,8 +9,8 @@ export default function Architecture() {
   return (
     <div className="container page">
       <PageHeading label="ARCHITECTURE & SYSTEM DESIGN" title="Make the system understandable.">
-        Interfaces, boundaries, data flow, and the decisions between them. These views draw from
-        documented projects and make their scope explicit.
+        Interfaces, component boundaries, data flow, and engineering tradeoffs across my projects.
+        Each diagram highlights a different view of the system.
       </PageHeading>
       <div className="architecture-list">
         {diagrams.map((d, i) => (

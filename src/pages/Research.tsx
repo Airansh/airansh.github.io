@@ -23,7 +23,7 @@ export default function Research() {
               <div>
                 <div className="card-meta">
                   <span>{p.type}</span>
-                  <span>{p.year}</span>
+                  {p.year && <span>{p.year}</span>}
                 </div>
                 <h3>{p.title}</h3>
                 {p.authors && <p className="authors">{p.authors}</p>}
@@ -59,10 +59,6 @@ export default function Research() {
               </article>
             ))}
         </div>
-        <p className="small-note source-note">
-          Publication details and article URLs come from the supplied resumes. Publisher and ITS
-          pages could not be independently accessed during site preparation.
-        </p>
       </section>
       <section className="research-section">
         <h2>Talks & presentations</h2>

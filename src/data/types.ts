@@ -24,6 +24,7 @@ export interface Study {
   tradeoffs: string
   outcome: string
   further?: string[]
+  nextSteps?: string[]
 }
 export interface ProjectLink {
   label: string
