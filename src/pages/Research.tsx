@@ -1,5 +1,5 @@
 import { ArrowUpRight, BookOpen, FileText, Mic } from 'lucide-react'
-import { publications } from '../data/profile'
+import { profile, publications } from '../data/profile'
 import { ExternalLink, PageHeading } from '../components/ui'
 export default function Research() {
   return (
@@ -44,6 +44,20 @@ export default function Research() {
           <h2>Technical writing</h2>
           <span className="small-note">University of Iowa ITS</span>
         </div>
+        <article className="writing-collection">
+          <FileText size={26} aria-hidden="true" />
+          <div>
+            <span className="role-label">AI TOOLS & PRACTICAL ADOPTION</span>
+            <h3>Practical guides to AI tools</h3>
+            <p>
+              My articles on AI tools, agents, and custom assistants, published through University
+              of Iowa ITS.
+            </p>
+          </div>
+          <ExternalLink className="button secondary" href={profile.writing}>
+            Browse my ITS articles
+          </ExternalLink>
+        </article>
         <div className="writing-grid">
           {publications
             .filter((p) => p.type === 'Article')

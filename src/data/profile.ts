@@ -5,6 +5,7 @@ export const profile = {
   location: 'Iowa City, IA',
   github: 'https://github.com/Airansh',
   linkedin: 'https://www.linkedin.com/in/vedanshairen',
+  writing: 'https://its.uiowa.edu/people/vedansh-airen',
   resume: 'resume/Vedansh_Airen_Resume.pdf',
   resumeVersion: '4423f3522994',
 }

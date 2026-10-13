@@ -67,6 +67,8 @@ Add `links` with a descriptive label, URL, and kind (`Product website`, `Company
 
 Add `screenshots` with a local `src`, useful `alt`, accurate `caption`, original `width`/`height`, and optional `sourceUrl`. The same optimized image supplies a card preview and the expandable detail image. Capture only public pages or author-approved material; never sign into a proprietary system or stage fake product screens. A public marketing-page capture must be labeled as such.
 
+Add author-approved video links with `recordings`: a title, description of the demonstrated scope, and original viewer URL. Cards link directly to the recording, and detail pages include a Recorded previews section. Use outbound viewer links for Google Drive recordings rather than loading third-party players on page arrival. Identify a sample scenario or simulation accurately.
+
 ## Public writing style
 
 Write project narratives as a direct account of the work, using first person for personal contributions and precise descriptions of system behavior. Keep source provenance and authoring notes in the content records and documentation rather than rendering phrases such as “the resume reports” or “the supplied materials.” Retain real limitations, team attribution, test scope, and manuscript status. Public project pages show relevant external links; private source records and generic authoring placeholders stay out of the UI.

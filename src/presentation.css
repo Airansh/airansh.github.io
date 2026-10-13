@@ -368,6 +368,9 @@ p {
   border-radius: 10px;
   padding: 18px;
 }
+.project-facts dd {
+  overflow-wrap: anywhere;
+}
 .about-card {
   background:
     radial-gradient(
@@ -383,6 +386,66 @@ p {
 .contact-option:hover {
   border-color: var(--accent);
   box-shadow: var(--shadow);
+}
+.writing-collection {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+  margin-bottom: 28px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+.writing-collection > svg {
+  color: var(--accent);
+}
+.writing-collection h3 {
+  font-size: 1.5rem;
+  margin-block: 8px 10px;
+}
+.writing-collection p {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 55em;
+}
+.recording-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 22px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background:
+    radial-gradient(
+      ellipse at 0% 0%,
+      color-mix(in srgb, var(--accent) 8%, transparent),
+      transparent 70%
+    ),
+    var(--surface);
+}
+.recording-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  color: var(--accent);
+  border: 1px solid var(--line);
+  background: var(--soft);
+}
+.recording-card h3 {
+  margin-block: 8px 12px;
+}
+.recording-card .button {
+  margin-top: 18px;
+}
+.recording-host {
+  display: inline-block;
+  color: var(--subtle);
+  font-size: 0.875rem;
+  margin-left: 14px;
 }
 @media (max-width: 960px) {
   .site-header {
@@ -437,6 +500,13 @@ p {
   }
 }
 @media (max-width: 850px) {
+  .writing-collection {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .writing-collection > .button {
+    grid-column: 2;
+    justify-self: start;
+  }
   .hero h1 {
     font-size: clamp(2.7rem, 8vw, 4.5rem);
   }
@@ -448,6 +518,22 @@ p {
   }
 }
 @media (max-width: 600px) {
+  .project-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .writing-collection,
+  .recording-card {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 22px;
+    gap: 18px;
+  }
+  .writing-collection > .button {
+    grid-column: 1;
+  }
+  .recording-host {
+    display: block;
+    margin: 10px 0 0;
+  }
   .hero {
     grid-template-columns: minmax(0, 1fr);
     padding-block: 48px;

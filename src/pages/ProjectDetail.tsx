@@ -5,7 +5,7 @@ import { projects } from '../data/projects'
 import { diagrams } from '../data/diagrams'
 import { CopyButton, ExternalLink, Eyebrow, ProjectCard, Tags } from '../components/ui'
 import NotFound from './NotFound'
-import { ProjectMedia } from '../components/ProjectMedia'
+import { ProjectMedia, RecordedPreviews } from '../components/ProjectMedia'
 const Diagram = lazy(() => import('../components/Diagram'))
 export default function ProjectDetail() {
   const { id } = useParams()
@@ -33,6 +33,7 @@ export default function ProjectDetail() {
     'Overview',
     'Contributions',
     ...(project.screenshots?.length ? ['Work previews'] : []),
+    ...(project.recordings?.length ? ['Recorded previews'] : []),
     ...(study ? ['Requirements', 'Implementation', 'Testing & validation', 'Tradeoffs'] : []),
     ...(diagram ? ['Architecture'] : []),
     'Results',
@@ -131,6 +132,7 @@ export default function ProjectDetail() {
           {project.screenshots?.length ? (
             <ProjectMedia images={project.screenshots} title={project.title} />
           ) : null}
+          {project.recordings?.length ? <RecordedPreviews recordings={project.recordings} /> : null}
           {study && (
             <>
               <section id="Requirements" tabIndex={-1}>

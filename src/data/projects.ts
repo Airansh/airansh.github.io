@@ -180,6 +180,14 @@ export const projects: Project[] = [
   },
   {
     id: 'vr-classroom',
+    recordings: [
+      {
+        title: 'A classroom scenario in VR',
+        description:
+          'A recorded example of one of several scenarios in the AI-guided teacher-training classroom.',
+        url: 'https://drive.google.com/file/d/15Ee7V9iVk54sh_V4r_wqGdgjA7S4Lq7_/view?usp=sharing',
+      },
+    ],
     title: 'AI-guided VR classroom',
     subtitle: 'Research at the intersection of AI and XR.',
     summary:
@@ -580,6 +588,14 @@ export const projects: Project[] = [
   },
   {
     id: 'generative-ar',
+    recordings: [
+      {
+        title: 'Generative AI in augmented reality',
+        description:
+          'A recorded demonstration of the Unity AR application for generative image replacement.',
+        url: 'https://drive.google.com/file/d/1HYRXkf-gf8al07H4wGqDQsaQJ1AuJt-X/view?usp=sharing',
+      },
+    ],
     title: 'Generative AI in AR',
     subtitle: 'From voice to an augmented view.',
     summary:
@@ -637,6 +653,14 @@ export const projects: Project[] = [
   },
   {
     id: 'kinect-tracking',
+    recordings: [
+      {
+        title: 'Face trajectory tracking',
+        description:
+          'A recorded preview of the face-position capture and trajectory tracking project.',
+        url: 'https://drive.google.com/file/d/15hA5k9nKzLdgomRShuxPoTF-fcxC-YKH/view?usp=sharing',
+      },
+    ],
     title: 'Kinect trajectory tracking',
     subtitle: 'Turning motion into analyzable data.',
     summary:
@@ -672,11 +696,46 @@ export const projects: Project[] = [
     sources: [researchResume],
   },
   {
-    id: 'green-corridor',
-    title: 'Green Corridor',
-    subtitle: 'IoT for emergency-vehicle routing.',
+    id: 'gokart-object-detection',
+    title: 'GoKart object detection',
+    subtitle: 'Live sensing for a competition GoKart.',
     summary:
-      'A team-built adaptive traffic-management prototype combining object detection and IoT sensors for emergency-vehicle corridors.',
+      'A Raspberry Pi 4 object-detection prototype built with mechatronics teams at Symbiosis University of Applied Sciences, with a Java Swing interface showing the GoKart and approaching objects in real time.',
+    category: 'Research & IoT',
+    context: 'Academic',
+    organization: 'Symbiosis University of Applied Sciences',
+    period: 'Undergraduate project',
+    tech: ['Raspberry Pi 4', 'Ultrasonic sensors', 'Java Swing', 'Object detection'],
+    contributions: [
+      'Worked with mechatronics teams on innovations for their competition GoKart.',
+      'Built an object-detection system using a Raspberry Pi 4 and ultrasonic sensors.',
+      'Developed a Java Swing GUI to show the GoKart and approaching objects, updated live.',
+    ],
+    outcomes: [
+      'Live visualization of the GoKart and approaching objects',
+      'Recorded object-detection simulation',
+    ],
+    sources: [
+      {
+        label: 'Project details supplied by Vedansh',
+        note: 'Direct author description and recorded simulation, October 2026.',
+      },
+    ],
+    recordings: [
+      {
+        title: 'GoKart object-detection simulation',
+        description:
+          'A recorded simulation of the GoKart object-detection prototype and its live Java Swing display.',
+        url: 'https://drive.google.com/file/d/1cD8TkxxpK82J5UX7aJkAqgHO1qeR4BqQ/view?usp=sharing',
+      },
+    ],
+  },
+  {
+    id: 'green-corridor',
+    title: 'Adaptive traffic management & Green Corridor',
+    subtitle: 'One traffic system, two use cases.',
+    summary:
+      'A team-built IoT prototype combining adaptive traffic management and emergency-vehicle green corridors within a single system, using object detection and connected sensors.',
     category: 'Research & IoT',
     context: 'Academic',
     organization: 'University of Iowa',
@@ -685,10 +744,19 @@ export const projects: Project[] = [
     contributions: [
       'Led the team developing the traffic-management prototype.',
       'Combined object detection, RFID, and connected sensors.',
+      'Supported adaptive traffic management and emergency-vehicle routing within the same project.',
       'Presented the project at Modern Marvels.',
     ],
     outcomes: ['University of Iowa Modern Marvels presentation'],
     sources: [researchResume],
+    recordings: [
+      {
+        title: 'Traffic management & Green Corridor',
+        description:
+          'A recorded preview of the project covering adaptive traffic management and emergency-vehicle green corridors.',
+        url: 'https://drive.google.com/file/d/1MgLdpCnmgbkO6sYKDe6cTrX2-NnBXhSL/view?usp=sharing',
+      },
+    ],
   },
   {
     id: 'digit-recognition',

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
-import { Expand, X } from 'lucide-react'
-import type { ProjectScreenshot } from '../data/types'
+import { Expand, Play, X } from 'lucide-react'
+import type { ProjectRecording, ProjectScreenshot } from '../data/types'
 import { ExternalLink } from './ui'
 
 function Screenshot({ image, title }: { image: ProjectScreenshot; title: string }) {
@@ -57,6 +57,30 @@ export function ProjectMedia({ images, title }: { images: ProjectScreenshot[]; t
       <h2>Work previews</h2>
       {images.map((image) => (
         <Screenshot key={image.src} image={image} title={title} />
+      ))}
+    </section>
+  )
+}
+
+export function RecordedPreviews({ recordings }: { recordings: ProjectRecording[] }) {
+  return (
+    <section className="media-gallery" id="Recorded previews" tabIndex={-1}>
+      <h2>Recorded previews</h2>
+      {recordings.map((recording) => (
+        <article className="recording-card" key={recording.url}>
+          <div className="recording-icon" aria-hidden="true">
+            <Play size={24} />
+          </div>
+          <div>
+            <span className="role-label">PROJECT DEMONSTRATION</span>
+            <h3>{recording.title}</h3>
+            <p>{recording.description}</p>
+            <ExternalLink className="button secondary" href={recording.url}>
+              Watch recording
+            </ExternalLink>
+            <span className="recording-host">Google Drive</span>
+          </div>
+        </article>
       ))}
     </section>
   )

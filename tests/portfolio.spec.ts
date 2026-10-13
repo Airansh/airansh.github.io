@@ -4,7 +4,7 @@ import { projects } from '../src/data/projects'
 
 test('search and category/context filters compose and survive refresh', async ({ page }) => {
   await page.goto('/#/work')
-  await expect(page.locator('.project-card')).toHaveCount(27)
+  await expect(page.locator('.project-card')).toHaveCount(projects.length)
   await page.getByRole('searchbox', { name: 'Search projects' }).fill('react')
   await page.getByRole('button', { name: 'Healthcare Software', exact: true }).click()
   await page.getByRole('combobox', { name: 'Filter by work context' }).selectOption('Professional')
@@ -17,7 +17,7 @@ test('search and category/context filters compose and survive refresh', async ({
     page.getByRole('heading', { name: 'No projects match those filters.' }),
   ).toBeVisible()
   await page.getByRole('button', { name: 'Reset filters' }).click()
-  await expect(page.locator('.project-card')).toHaveCount(27)
+  await expect(page.locator('.project-card')).toHaveCount(projects.length)
 })
 
 test('all project routes load with direct project copy and correct titles', async ({ page }) => {
@@ -101,7 +101,7 @@ test('unknown route has a useful recovery action', async ({ page }) => {
   await page.goto('/#/missing')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('A path worth retracing.')
   await page.getByRole('link', { name: 'Explore the work' }).click()
-  await expect(page.locator('.project-card')).toHaveCount(27)
+  await expect(page.locator('.project-card')).toHaveCount(projects.length)
 })
 
 for (const theme of ['dark', 'light']) {
@@ -194,6 +194,7 @@ test('reading text scales to 200% without horizontal overflow on mobile', async 
     '/',
     '/#/work',
     '/#/work/chenoa-healthcare',
+    '/#/work/gokart-object-detection',
     '/#/experience',
     '/#/architecture',
     '/#/research',
@@ -207,6 +208,32 @@ test('reading text scales to 200% without horizontal overflow on mobile', async 
     })
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   }
+})
+
+test('recorded previews link to the correct projects and the writing collection is discoverable', async ({
+  page,
+}) => {
+  for (const project of projects.filter((p) => p.recordings?.length)) {
+    await page.goto(`/#/work/${project.id}`)
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(project.title)
+    const previews = page.locator('section[id="Recorded previews"]')
+    for (const recording of project.recordings!) {
+      await expect(
+        previews.getByRole('heading', { name: recording.title, exact: true }),
+      ).toBeVisible()
+      const link = previews.getByRole('link', { name: 'Watch recording' })
+      await expect(link).toHaveAttribute('href', recording.url)
+      await expect(link).toHaveAttribute('target', '_blank')
+    }
+  }
+  await page.goto('/#/work?q=gokart')
+  await expect(page.locator('.project-card')).toHaveCount(1)
+  await expect(page.getByRole('heading', { name: 'GoKart object detection' })).toBeVisible()
+  await page.goto('/#/research')
+  await expect(page.getByRole('link', { name: 'Browse my ITS articles' })).toHaveAttribute(
+    'href',
+    'https://its.uiowa.edu/people/vedansh-airen',
+  )
 })
 
 test('recruiter essentials stay visible and unfinished sections are absent', async ({ page }) => {

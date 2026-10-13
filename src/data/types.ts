@@ -39,6 +39,11 @@ export interface ProjectScreenshot {
   height: number
   sourceUrl?: string
 }
+export interface ProjectRecording {
+  title: string
+  description: string
+  url: string
+}
 export interface Project {
   id: string
   title: string
@@ -55,6 +60,7 @@ export interface Project {
   github?: string
   links?: ProjectLink[]
   screenshots?: ProjectScreenshot[]
+  recordings?: ProjectRecording[]
   featured?: boolean
   diagram?: string
   study?: Study

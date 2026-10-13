@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowUpRight, Check, Copy, Download } from 'lucide-react'
+import { ArrowUpRight, Check, Copy, Download, Play } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import type { ReactNode } from 'react'
 import type { Project } from '../data/types'
@@ -205,11 +205,18 @@ export function ProjectCard({
           </div>
         )}
         <Tags items={project.tech.slice(0, 4)} />
-        {project.links?.length ? (
+        {project.links?.length || project.recordings?.length ? (
           <div className="project-public-links">
-            {project.links.map((link) => (
+            {project.links?.map((link) => (
               <ExternalLink key={link.url} href={link.url}>
                 {link.kind}
+              </ExternalLink>
+            ))}
+            {project.recordings?.map((recording) => (
+              <ExternalLink key={recording.url} href={recording.url}>
+                <Play size={14} aria-hidden="true" />
+                Recorded preview
+                <span className="sr-only"> of {project.title}</span>
               </ExternalLink>
             ))}
           </div>

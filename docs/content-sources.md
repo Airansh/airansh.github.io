@@ -11,7 +11,7 @@
 - `Vedansh_Airen_Resume_UCSD_LEI.pdf`: broader research, presentations, IoT project, digit recognition, manuscript, and IoT publication citation.
 - `Vedansh_Airen_Resume (2).pdf`: general full-stack resume; initially used as the downloadable resume.
 
-Project metrics are resume-reported unless a repository independently supplies them. Source labels are displayed on detail pages. Raw source resumes other than the general download are not committed to the public repository.
+Project metrics are resume-reported unless a repository independently supplies them. Source provenance stays in these records; public detail pages show relevant external links. Raw source resumes other than the general download are not committed to the public repository.
 
 ## Public repositories inspected
 
@@ -62,3 +62,15 @@ These links were supplied directly by the author. Five public-page captures are 
 ## Current resume download
 
 `Vedansh_Airen_Resume.pdf`, subsequently supplied by Vedansh, replaces the previous downloadable PDF byte-for-byte at the shared public path. Home, About, Experience, Contact, and the no-JavaScript fallback use that file. A content-hash query parameter refreshes cached downloads. This download update does not revise the previously sourced project or experience content.
+
+## Writing collection and recorded previews
+
+Vedansh supplied the Iowa ITS author profile and five Google Drive recordings in October 2026. All six viewer pages returned HTTP 200 without authentication when checked. The ITS profile lists authored AI-tool articles; the Research page links to that collection alongside the existing individual articles.
+
+- Face trajectory tracking → `kinect-tracking`: https://drive.google.com/file/d/15hA5k9nKzLdgomRShuxPoTF-fcxC-YKH/view?usp=sharing
+- Generative AI in AR → `generative-ar`: https://drive.google.com/file/d/1HYRXkf-gf8al07H4wGqDQsaQJ1AuJt-X/view?usp=sharing
+- AI-guided VR classroom → `vr-classroom`: https://drive.google.com/file/d/15Ee7V9iVk54sh_V4r_wqGdgjA7S4Lq7_/view?usp=sharing. One of several classroom scenarios.
+- GoKart object detection → `gokart-object-detection`: https://drive.google.com/file/d/1cD8TkxxpK82J5UX7aJkAqgHO1qeR4BqQ/view?usp=sharing. New entry based on the author's description of collaboration with mechatronics teams at Symbiosis, Raspberry Pi 4, ultrasonic sensors, and live Java Swing visualization. No performance metrics or deployment claim are inferred.
+- Traffic management and Green Corridor → existing `green-corridor`: https://drive.google.com/file/d/1MgLdpCnmgbkO6sYKDe6cTrX2-NnBXhSL/view?usp=sharing. One project serving both use cases; its URL stays stable.
+
+The links open the original Drive viewers. This check verifies link reachability, not a frame-by-frame review of the recordings.
