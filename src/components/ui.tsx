@@ -48,7 +48,11 @@ export function ExternalLink({
 }
 export function ResumeLink({ className = 'button secondary' }: { className?: string }) {
   return (
-    <a className={className} href={`${import.meta.env.BASE_URL}${profile.resume}`} download>
+    <a
+      className={className}
+      href={`${import.meta.env.BASE_URL}${profile.resume}?v=${profile.resumeVersion}`}
+      download
+    >
       <Download size={16} aria-hidden="true" /> Download resume
     </a>
   )

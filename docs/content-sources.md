@@ -9,7 +9,7 @@
 - `Profile (1).pdf`: early roles, manufacturing execution system, WordPress work, teaching, tracking research, and Pocket Desk.
 - `Vedansh_Airen_Resume_UW_Medicine_ERC.pdf`: automation and healthcare context, article/program URLs.
 - `Vedansh_Airen_Resume_UCSD_LEI.pdf`: broader research, presentations, IoT project, digit recognition, manuscript, and IoT publication citation.
-- `Vedansh_Airen_Resume (2).pdf`: general full-stack resume; copied unmodified as the downloadable resume.
+- `Vedansh_Airen_Resume (2).pdf`: general full-stack resume; initially used as the downloadable resume.
 
 Project metrics are resume-reported unless a repository independently supplies them. Source labels are displayed on detail pages. Raw source resumes other than the general download are not committed to the public repository.
 
@@ -58,3 +58,7 @@ Approved screenshots for professional systems, first-person lessons learned, spe
 - Iowa AI Gateway pilot announcement: https://its.uiowa.edu/news/2026/01/ai-gateway-pilot-what-it-who-its-and-how-join
 
 These links were supplied directly by the author. Five public-page captures are included: Titronics, MyCare, Simplex company website, Simplex applications entry page, and the AI Gateway announcement. They are labeled by their actual scope; internal screens are not inferred from public marketing pages. Cranial Technologies returned HTTP 403 to the capture runner, so its client link and attribution are included without a fabricated preview. Capture provenance is recorded in docs/work-preview-captures.json.
+
+## Current resume download
+
+`Vedansh_Airen_Resume.pdf`, subsequently supplied by Vedansh, replaces the previous downloadable PDF byte-for-byte at the shared public path. Home, About, Experience, Contact, and the no-JavaScript fallback use that file. A content-hash query parameter refreshes cached downloads. This download update does not revise the previously sourced project or experience content.

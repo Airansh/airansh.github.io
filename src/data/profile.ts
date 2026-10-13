@@ -6,6 +6,7 @@ export const profile = {
   github: 'https://github.com/Airansh',
   linkedin: 'https://www.linkedin.com/in/vedanshairen',
   resume: 'resume/Vedansh_Airen_Resume.pdf',
+  resumeVersion: '4423f3522994',
 }
 export const experiences: Experience[] = [
   {
