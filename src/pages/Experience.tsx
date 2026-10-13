@@ -29,29 +29,32 @@ export default function Experience() {
               <h2>{e.organization}</h2>
               {e.kind && <div className="role-kind">{e.kind}</div>}
               <p>{e.summary}</p>
-              <details open={i < 2}>
-                <summary>
-                  Contributions & related work <Plus size={16} />
-                </summary>
-                <ul>
-                  {e.highlights.map((h) => (
-                    <li key={h}>{h}</li>
-                  ))}
-                </ul>
-                {e.projects.length > 0 && (
-                  <div className="timeline-projects">
-                    {e.projects.map((id) => {
-                      const p = projects.find((p) => p.id === id)
-                      return p ? (
-                        <Link key={id} to={`/work/${id}`}>
-                          {p.title}
-                          <ArrowUpRight size={14} />
-                        </Link>
-                      ) : null
-                    })}
-                  </div>
-                )}
-              </details>
+              {e.highlights[0] && <p className="timeline-highlight">{e.highlights[0]}</p>}
+              {e.highlights.length > 1 && (
+                <details open={i < 2}>
+                  <summary>
+                    More contributions <Plus size={16} />
+                  </summary>
+                  <ul>
+                    {e.highlights.slice(1).map((h) => (
+                      <li key={h}>{h}</li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+              {e.projects.length > 0 && (
+                <div className="timeline-projects">
+                  {e.projects.map((id) => {
+                    const p = projects.find((p) => p.id === id)
+                    return p ? (
+                      <Link key={id} to={`/work/${id}`}>
+                        {p.title}
+                        <ArrowUpRight size={14} />
+                      </Link>
+                    ) : null
+                  })}
+                </div>
+              )}
             </div>
           </article>
         ))}

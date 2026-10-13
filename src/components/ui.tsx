@@ -198,6 +198,12 @@ export function ProjectCard({
           </Link>
         </h3>
         <p>{project.summary}</p>
+        {project.outcomes[0] && (
+          <div className="card-impact">
+            <Check size={16} aria-hidden="true" />
+            <span>{project.outcomes[0]}</span>
+          </div>
+        )}
         <Tags items={project.tech.slice(0, 4)} />
         {project.links?.length ? (
           <div className="project-public-links">

@@ -37,6 +37,10 @@ test('all project routes load with direct project copy and correct titles', asyn
 test('diagrams render, expand, zoom, close and rerender with the theme', async ({ page }) => {
   await page.goto('/#/architecture')
   await expect(page.locator('.diagram-render svg')).toHaveCount(5)
+  await expect(page.getByText('Room to explore.')).toHaveCount(0)
+  await expect(page.getByText('Diagram templates')).toHaveCount(0)
+  await page.getByRole('navigation', { name: 'System views' }).getByRole('link').last().click()
+  await expect(page.locator('#system-vr')).toBeFocused()
   await page.getByRole('button', { name: 'Expand diagram' }).first().click()
   const dialog = page.getByRole('dialog')
   await expect(dialog).toBeVisible()
@@ -185,8 +189,17 @@ test('public project links and image previews remain separate from case-study na
 })
 
 test('reading text scales to 200% without horizontal overflow on mobile', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 })
-  for (const route of ['/', '/#/work/chenoa-healthcare', '/#/about', '/#/contact']) {
+  await page.setViewportSize({ width: 320, height: 844 })
+  for (const route of [
+    '/',
+    '/#/work',
+    '/#/work/chenoa-healthcare',
+    '/#/experience',
+    '/#/architecture',
+    '/#/research',
+    '/#/about',
+    '/#/contact',
+  ]) {
     await page.goto(route)
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
     await page.evaluate(() => {
@@ -194,4 +207,68 @@ test('reading text scales to 200% without horizontal overflow on mobile', async 
     })
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   }
+})
+
+test('recruiter essentials stay visible and unfinished sections are absent', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Vedansh Airen')
+  await expect(page.locator('.featured-grid .card-impact')).toHaveCount(6)
+  await expect(page.locator('main').getByRole('link', { name: 'Download resume' })).toHaveAttribute(
+    'download',
+    '',
+  )
+  await page.goto('/#/experience')
+  for (const highlight of await page.locator('.timeline-highlight').all()) {
+    await highlight.scrollIntoViewIfNeeded()
+    await expect(highlight).toBeVisible()
+  }
+  await page.goto('/#/research')
+  await expect(page.getByText('Engineering notes, in the making.')).toHaveCount(0)
+  await expect(page.getByText('Submitted manuscript', { exact: true })).toBeVisible()
+})
+
+test('tablet navigation supports keyboard dismissal and route focus', async ({ page }) => {
+  await page.setViewportSize({ width: 820, height: 1000 })
+  await page.goto('/')
+  const menu = page.getByRole('button', { name: 'Open navigation' })
+  await menu.click()
+  await page.keyboard.press('Tab')
+  await expect(
+    page.getByRole('navigation', { name: 'Mobile navigation' }).getByRole('link').first(),
+  ).toBeFocused()
+  await page.keyboard.press('Escape')
+  await expect(menu).toBeFocused()
+  await menu.click()
+  await page
+    .getByRole('navigation', { name: 'Mobile navigation' })
+    .getByRole('link', { name: 'About' })
+    .click()
+  await expect(page.getByRole('heading', { level: 1 })).toBeFocused()
+  await expect(page.getByRole('navigation', { name: 'Mobile navigation' })).toHaveCount(0)
+})
+
+test('reduced motion keeps the entire portfolio readable without animations', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  for (const route of ['/', '/#/work', '/#/experience', '/#/architecture']) {
+    await page.goto(route)
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+    await page.locator('main').locator('article').last().scrollIntoViewIfNeeded()
+    expect(
+      await page.evaluate(
+        () => document.getAnimations().filter((a) => a.playState === 'running').length,
+      ),
+    ).toBe(0)
+    expect(await page.locator('main').evaluate((el) => getComputedStyle(el).opacity)).toBe('1')
+  }
+})
+
+test('the initial theme follows the reader’s preference and keeps their selection', async ({
+  page,
+}) => {
+  await page.emulateMedia({ colorScheme: 'light' })
+  await page.goto('/')
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light')
+  await page.getByRole('button', { name: 'Switch to dark theme' }).click()
+  await page.reload()
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
 })

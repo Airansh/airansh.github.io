@@ -7,6 +7,7 @@ import {
   Database,
   Github,
   Layers3,
+  MapPin,
   ScanLine,
   Workflow,
 } from 'lucide-react'
@@ -19,18 +20,22 @@ export default function Home() {
     <div className="home">
       <section className="hero container">
         <div className="hero-copy">
-          <Eyebrow>FULL-STACK ENGINEERING · APPLIED AI</Eyebrow>
+          <Eyebrow>SOFTWARE ENGINEER · APPLIED AI</Eyebrow>
           <h1 tabIndex={-1}>
-            Thoughtful systems.
-            <br />
-            <span>Real-world impact.</span>
+            Vedansh Airen
+            <span>
+              Full-stack engineering.
+              <br />
+              Applied AI.
+            </span>
           </h1>
           <p className="hero-intro">
-            I’m Vedansh. I build software that connects complex systems to the people who use them.
+            I build dependable applications, AI platforms, and automation for people doing complex
+            work.
           </p>
           <p className="hero-description">
-            From enterprise AI and healthcare applications to manufacturing workflows and immersive
-            research—across the full path from schema to screen.
+            5+ years across healthcare, university IT, manufacturing, and immersive research. M.S.
+            Computer Science, University of Iowa.
           </p>
           <div className="hero-buttons">
             <Link to="/work" className="button primary">
@@ -39,9 +44,12 @@ export default function Home() {
             <ResumeLink />
           </div>
           <div className="hero-location">
-            <span className="status-dot" />
-            Iowa City, IA<span className="divider">/</span>M.S. Computer Science, University of Iowa
+            <MapPin size={15} aria-hidden="true" /> Iowa City, IA
+            <span className="divider">/</span> University of Iowa ITS
           </div>
+          <Link className="text-link hero-experience" to="/experience">
+            View my experience <ArrowRight size={16} />
+          </Link>
         </div>
         <div
           className="hero-blueprint"
@@ -149,9 +157,9 @@ export default function Home() {
           <div>
             <Eyebrow>SELECTED WORK</Eyebrow>
             <h2>
-              Different domains.
+              Software with a purpose.
               <br />
-              <span>The same engineering care.</span>
+              <span>Results you can explore.</span>
             </h2>
           </div>
           <div className="section-heading-aside">

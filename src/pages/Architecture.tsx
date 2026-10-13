@@ -1,20 +1,37 @@
 import { lazy, Suspense } from 'react'
-import { ArrowUpRight, FileCode2 } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { diagrams, diagramTemplates, plannedDesigns } from '../data/diagrams'
+import { diagrams } from '../data/diagrams'
 import { PageHeading } from '../components/ui'
-import { CodeBlock } from '../components/CodeBlock'
 const Diagram = lazy(() => import('../components/Diagram'))
 export default function Architecture() {
   return (
     <div className="container page">
-      <PageHeading label="ARCHITECTURE & SYSTEM DESIGN" title="Make the system understandable.">
-        Interfaces, component boundaries, data flow, and engineering tradeoffs across my projects.
-        Each diagram highlights a different view of the system.
+      <PageHeading label="ARCHITECTURE & SYSTEM DESIGN" title="How the systems fit together.">
+        Five views into the applications I’ve worked on—from evaluation pipelines and API boundaries
+        to transactional workflows and immersive research.
       </PageHeading>
+      <nav className="architecture-index" aria-label="System views">
+        {diagrams.map((d, i) => (
+          <a
+            key={d.id}
+            href={`#system-${d.id}`}
+            onClick={(e) => {
+              e.preventDefault()
+              const section = document.getElementById(`system-${d.id}`)
+              section?.scrollIntoView({ behavior: 'instant', block: 'start' })
+              section?.focus({ preventScroll: true })
+            }}
+          >
+            <span>0{i + 1}</span>
+            {d.title}
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+        ))}
+      </nav>
       <div className="architecture-list">
         {diagrams.map((d, i) => (
-          <article key={d.id}>
+          <article key={d.id} id={`system-${d.id}`} tabIndex={-1}>
             <div className="architecture-heading">
               <span className="section-number">0{i + 1}</span>
               <div>
@@ -33,43 +50,6 @@ export default function Architecture() {
           </article>
         ))}
       </div>
-      <section className="planned-section">
-        <div className="section-heading">
-          <div>
-            <span className="role-label">PLANNED DESIGN EXERCISES</span>
-            <h2>Room to explore.</h2>
-          </div>
-        </div>
-        <p>
-          Future exercises for working through requirements, scale, failure modes, and tradeoffs.
-          These are planned studies, not completed professional systems.
-        </p>
-        <div className="planned-grid">
-          {plannedDesigns.map((title) => (
-            <div key={title}>
-              <FileCode2 size={19} />
-              <span>{title}</span>
-              <small>Planned</small>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className="templates-section">
-        <span className="role-label">REUSABLE STARTING POINTS</span>
-        <h2>Diagram templates</h2>
-        <p>
-          Small, illustrative Mermaid templates for future case studies. These examples do not
-          describe a completed project.
-        </p>
-        <div className="templates-grid">
-          {diagramTemplates.map((t) => (
-            <details key={t.title}>
-              <summary>{t.title}</summary>
-              <CodeBlock title="Mermaid template" code={t.code} language="plain" />
-            </details>
-          ))}
-        </div>
-      </section>
     </div>
   )
 }

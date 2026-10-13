@@ -77,14 +77,6 @@ export default function Research() {
             </article>
           ))}
       </section>
-      <section className="writing-note">
-        <span className="role-label">NEXT ON THE WRITING DESK</span>
-        <h2>Engineering notes, in the making.</h2>
-        <p>
-          Space for future articles on software architecture, AI evaluation, delivery practices, and
-          lessons from building real systems. New writing will appear here when published.
-        </p>
-      </section>
     </div>
   )
 }

@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, Github, Linkedin, Menu, Moon, Sun, X } from 'lucide-react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { profile } from '../data/profile'
-import { ExternalLink } from './ui'
+import { ExternalLink, ResumeLink } from './ui'
+import { RouteMotion } from './RouteMotion'
 const nav = [
   ['/work', 'Work'],
   ['/experience', 'Experience'],
@@ -15,9 +16,13 @@ export function Layout() {
   const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || 'dark')
   const [menu, setMenu] = useState(false)
   const menuButton = useRef<HTMLButtonElement>(null)
+  const header = useRef<HTMLElement>(null)
   const initial = useRef(true)
   useEffect(() => {
     document.documentElement.dataset.theme = theme
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', theme === 'light' ? '#f7f8f2' : '#0e1512')
     try {
       localStorage.setItem('va-theme', theme)
     } catch {
@@ -27,11 +32,29 @@ export function Layout() {
   }, [theme])
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
-    if (!initial.current)
-      requestAnimationFrame(() =>
-        document.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true }),
-      )
-    initial.current = false
+    let observer: MutationObserver | undefined
+    const frame = requestAnimationFrame(() => {
+      if (initial.current) {
+        initial.current = false
+        return
+      }
+      function focusHeading() {
+        const heading = document.querySelector<HTMLElement>('main h1')
+        if (!heading || !heading.getClientRects().length) return false
+        heading.focus({ preventScroll: true })
+        observer?.disconnect()
+        return true
+      }
+      if (!focusHeading()) {
+        observer = new MutationObserver(focusHeading)
+        const main = document.getElementById('main-content')
+        if (main) observer.observe(main, { childList: true, subtree: true })
+      }
+    })
+    return () => {
+      cancelAnimationFrame(frame)
+      observer?.disconnect()
+    }
   }, [location.pathname])
   useEffect(() => {
     function escape(e: KeyboardEvent) {
@@ -40,8 +63,26 @@ export function Layout() {
         menuButton.current?.focus()
       }
     }
-    if (menu) window.addEventListener('keydown', escape)
-    return () => window.removeEventListener('keydown', escape)
+    function outside(e: PointerEvent) {
+      if (!header.current?.contains(e.target as Node)) setMenu(false)
+    }
+    function resize() {
+      if (window.innerWidth > 960) {
+        if (document.getElementById('mobile-nav')?.contains(document.activeElement))
+          document.querySelector<HTMLElement>('.brand')?.focus()
+        setMenu(false)
+      }
+    }
+    if (menu) {
+      window.addEventListener('keydown', escape)
+      window.addEventListener('pointerdown', outside)
+      window.addEventListener('resize', resize)
+    }
+    return () => {
+      window.removeEventListener('keydown', escape)
+      window.removeEventListener('pointerdown', outside)
+      window.removeEventListener('resize', resize)
+    }
   }, [menu])
   return (
     <>
@@ -55,7 +96,13 @@ export function Layout() {
       >
         Skip to content
       </a>
-      <header className="site-header">
+      <header
+        ref={header}
+        className="site-header"
+        onBlurCapture={(e) => {
+          if (e.relatedTarget && !e.currentTarget.contains(e.relatedTarget as Node)) setMenu(false)
+        }}
+      >
         <div className="header-inner">
           <Link
             className="brand"
@@ -112,7 +159,16 @@ export function Layout() {
         )}
       </header>
       <main id="main-content" tabIndex={-1}>
-        <Outlet />
+        <RouteMotion />
+        <Suspense
+          fallback={
+            <div className="page-loading" role="status">
+              Loading page…
+            </div>
+          }
+        >
+          <Outlet />
+        </Suspense>
       </main>
       <footer className="site-footer">
         <div className="footer-top">
@@ -127,6 +183,7 @@ export function Layout() {
             </p>
           </div>
           <div className="footer-links">
+            <ResumeLink className="footer-resume" />
             <ExternalLink href={profile.github}>
               <Github size={16} /> GitHub
             </ExternalLink>
@@ -141,7 +198,7 @@ export function Layout() {
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Vedansh Airen</span>
           <span>
-            Iowa City, IA <span className="footer-dot">·</span> Built with care & TypeScript
+            Iowa City, IA <span className="footer-dot">·</span> Full-stack engineering & applied AI
           </span>
           <a
             href="#top"

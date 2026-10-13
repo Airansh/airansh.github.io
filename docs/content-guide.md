@@ -39,7 +39,7 @@ For future detailed designs, use [the full case-study outline](case-study-templa
 
 Add a `DiagramDefinition` in `src/data/diagrams.ts` with a unique ID, a linked project ID, source description, Mermaid code, and an accessible description. Set the project's `diagram` to this ID. The renderer uses Mermaid's strict security mode and supports expanded viewing, zoom, Escape dismissal, source display, and copying.
 
-The architecture page includes templates for high-level, sequence, ER, data-flow, deployment, and component diagrams. Validate new diagrams in a browser; syntax errors retain a source fallback but must be fixed before publication.
+The architecture page shows system views from completed projects, with an index for navigation. Keep planned exercises and generic diagram templates out of the public portfolio. Validate new diagrams in a browser; syntax errors retain a source fallback but must be fixed before publication.
 
 `CodeBlock` supports syntax-highlighted TypeScript with copying. Example:
 
@@ -70,3 +70,5 @@ Add `screenshots` with a local `src`, useful `alt`, accurate `caption`, original
 ## Public writing style
 
 Write project narratives as a direct account of the work, using first person for personal contributions and precise descriptions of system behavior. Keep source provenance and authoring notes in the content records and documentation rather than rendering phrases such as “the resume reports” or “the supplied materials.” Retain real limitations, team attribution, test scope, and manuscript status. Public project pages show relevant external links; private source records and generic authoring placeholders stay out of the UI.
+
+Lead with the engineer’s name, role, and relevant experience. Project cards show a concrete outcome; each experience entry keeps its strongest contribution and project links visible. Publish completed writing and projects rather than future-content placeholders. Presentation refinements live in `src/presentation.css`. Scroll reveals are progressive enhancements: content stays visible, and reduced-motion preferences disable animation. Maintain keyboard focus, 44-pixel controls, readable mobile reflow, and dark/light contrast when updating the design.

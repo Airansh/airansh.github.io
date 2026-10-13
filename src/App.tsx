@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react'
+import { lazy, useEffect } from 'react'
 import { HashRouter, Route, Routes, useLocation } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import Home from './pages/Home'
@@ -30,27 +30,19 @@ export default function App() {
   return (
     <HashRouter>
       <Metadata />
-      <Suspense
-        fallback={
-          <div className="page-loading" role="status">
-            Loading portfolio…
-          </div>
-        }
-      >
-        <Routes>
-          <Route element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="work" element={<Work />} />
-            <Route path="work/:id" element={<ProjectDetail />} />
-            <Route path="experience" element={<Experience />} />
-            <Route path="architecture" element={<Architecture />} />
-            <Route path="research" element={<Research />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </Suspense>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="work" element={<Work />} />
+          <Route path="work/:id" element={<ProjectDetail />} />
+          <Route path="experience" element={<Experience />} />
+          <Route path="architecture" element={<Architecture />} />
+          <Route path="research" element={<Research />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </HashRouter>
   )
 }
