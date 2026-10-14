@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright'
 
 const api = 'https://vedansh-portfolio-chat.suas104.workers.dev/chat'
 const answer =
-  'Vedansh contributed full-stack healthcare features at FarrPro, including Titronics Cloud and MyCare.'
+  'I contributed full-stack healthcare features at FarrPro, including Titronics Cloud and MyCare.'
 const response = () =>
   [
     `event: delta\ndata: ${JSON.stringify({ text: answer.slice(0, 35) })}\n\n`,
@@ -21,13 +21,15 @@ test('chat loads on demand, streams a sourced reply, sends bounded history, clea
   })
   await page.goto('/')
   expect(requests).toHaveLength(0)
-  const launcher = page.getByRole('button', { name: 'Ask about Vedansh', exact: true })
+  const launcher = page.getByRole('button', { name: 'Talk to my Airen Bot', exact: true })
   await launcher.click()
-  const dialog = page.getByRole('dialog', { name: 'Ask about Vedansh' })
+  const dialog = page.getByRole('dialog', { name: 'Airen Bot' })
   await expect(dialog).toBeVisible()
+  await expect(dialog.locator('#chat-disclaimer')).toContainText('AI version of me, Vedansh Airen')
+  await expect(dialog.locator('#chat-disclaimer')).toContainText('can get details wrong')
   const field = dialog.getByRole('textbox', { name: 'Your question' })
   await expect(field).toBeFocused()
-  await field.fill('What healthcare experience does Vedansh have?')
+  await field.fill('What healthcare experience do you have?')
   await field.press('Enter')
   await expect(dialog.getByRole('log')).toContainText(answer)
   await expect(dialog.getByRole('link', { name: 'Titronics Cloud' })).toHaveAttribute(
@@ -74,7 +76,7 @@ test('chat errors remain actionable and generated markup and unsafe sources are 
     })
   })
   await page.goto('/')
-  await page.getByRole('button', { name: 'Ask about Vedansh', exact: true }).click()
+  await page.getByRole('button', { name: 'Talk to my Airen Bot', exact: true }).click()
   const dialog = page.getByRole('dialog')
   await dialog.getByRole('button', { name: 'Show me an AI project.' }).click()
   await expect(dialog.getByRole('alert')).toContainText('daily limit')
@@ -95,7 +97,7 @@ for (const theme of ['dark', 'light']) {
     await page.evaluate(() => {
       document.documentElement.style.fontSize = '200%'
     })
-    await page.getByRole('button', { name: 'Ask about Vedansh', exact: true }).click()
+    await page.getByRole('button', { name: 'Talk to my Airen Bot', exact: true }).click()
     const dialog = page.getByRole('dialog')
     await expect(dialog.getByRole('textbox')).toBeFocused()
     expect(await dialog.evaluate((el) => el.scrollWidth <= el.clientWidth)).toBe(true)
@@ -103,7 +105,7 @@ for (const theme of ['dark', 'light']) {
     expect(await dialog.locator('.chat-history').evaluate((el) => el.clientHeight)).toBeGreaterThan(
       60,
     )
-    await expect(dialog.getByRole('button', { name: 'Close portfolio guide' })).toBeInViewport()
+    await expect(dialog.getByRole('button', { name: 'Close Airen Bot' })).toBeInViewport()
     await page.keyboard.press('Tab')
     await page.keyboard.press('Tab')
     await page.keyboard.press('Tab')
@@ -131,7 +133,7 @@ test('a visitor can stop a pending reply and keep the panel usable', async ({ pa
       .catch(() => {})
   })
   await page.goto('/')
-  await page.getByRole('button', { name: 'Ask about Vedansh', exact: true }).click()
+  await page.getByRole('button', { name: 'Talk to my Airen Bot', exact: true }).click()
   const dialog = page.getByRole('dialog')
   await dialog.getByRole('textbox').fill('Tell me about the AI Gateway.')
   await dialog.getByRole('button', { name: 'Send question' }).click()

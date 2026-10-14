@@ -5,9 +5,9 @@ import type { ChatTurn } from '../lib/chat'
 import { ExternalLink } from './ui'
 
 const suggestions = [
-  'What’s Vedansh’s experience?',
+  'What’s your experience?',
   'Show me an AI project.',
-  'Which projects have video demos?',
+  'Which of your projects have video demos?',
 ]
 export default function ChatPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null)
@@ -57,7 +57,7 @@ export default function ChatPanel({ open, onClose }: { open: boolean; onClose: (
     setStreamed('')
     setError('')
     setBusy(true)
-    setAnnouncement('The portfolio guide is answering.')
+    setAnnouncement('Airen Bot is answering.')
     const timeout = setTimeout(() => controller.abort(), 35000)
     try {
       const answer = await askPortfolio(question, turns, controller.signal, (text) => {
@@ -101,7 +101,7 @@ export default function ChatPanel({ open, onClose }: { open: boolean; onClose: (
       id="portfolio-chat"
       className="chat-panel"
       aria-labelledby="chat-title"
-      aria-describedby="chat-privacy"
+      aria-describedby="chat-disclaimer chat-privacy"
       onClose={onClose}
       onClick={(event) => {
         if (event.target === event.currentTarget) {
@@ -118,8 +118,8 @@ export default function ChatPanel({ open, onClose }: { open: boolean; onClose: (
     >
       <header className="chat-heading">
         <div>
-          <span className="role-label">AI PORTFOLIO GUIDE</span>
-          <h2 id="chat-title">Ask about Vedansh</h2>
+          <span className="role-label">AI VERSION OF VEDANSH</span>
+          <h2 id="chat-title">Airen Bot</h2>
         </div>
         <div className="chat-actions">
           <button
@@ -134,7 +134,7 @@ export default function ChatPanel({ open, onClose }: { open: boolean; onClose: (
           <button
             type="button"
             className="icon-button"
-            aria-label="Close portfolio guide"
+            aria-label="Close Airen Bot"
             onClick={() => dialog.current?.close()}
           >
             <X size={20} />
@@ -147,8 +147,8 @@ export default function ChatPanel({ open, onClose }: { open: boolean; onClose: (
             <div className="chat-emblem" aria-hidden="true">
               <Compass size={28} />
             </div>
-            <h3>A closer look at the work.</h3>
-            <p>Explore the projects, experience, and ideas behind this portfolio.</p>
+            <h3>Hey, I’m Airen Bot.</h3>
+            <p>Ask me about my projects, experience, or the ideas I’ve been working on.</p>
             <div className="chat-suggestions">
               {suggestions.map((question) => (
                 <button type="button" key={question} onClick={() => void submit(question)}>
@@ -167,7 +167,7 @@ export default function ChatPanel({ open, onClose }: { open: boolean; onClose: (
                 <p>{turn.question}</p>
               </div>
               <div className="chat-message assistant">
-                <span className="chat-sender">Portfolio guide</span>
+                <span className="chat-sender">Airen Bot</span>
                 <p>{turn.answer}</p>
                 {!!turn.sources.length && (
                   <ul className="chat-sources" aria-label="Portfolio sources">
@@ -190,8 +190,8 @@ export default function ChatPanel({ open, onClose }: { open: boolean; onClose: (
             </div>
             {(busy || streamed) && (
               <div className="chat-message assistant" aria-live="off">
-                <span className="chat-sender">Portfolio guide</span>
-                <p>{streamed || 'Looking through the portfolio…'}</p>
+                <span className="chat-sender">Airen Bot</span>
+                <p>{streamed || 'Let me take a look…'}</p>
                 {busy && <span className="chat-working" aria-hidden="true" />}
               </div>
             )}
@@ -210,9 +210,10 @@ export default function ChatPanel({ open, onClose }: { open: boolean; onClose: (
             </div>
           </div>
         )}
-        <p className="chat-note">
-          AI answers use the public portfolio. Check the linked pages for details. This site doesn’t
-          save conversations.
+        <p id="chat-disclaimer" className="chat-note">
+          This is an AI version of me, Vedansh Airen. It can get details wrong. Please{' '}
+          <a href="mailto:vedairen@gmail.com">get in touch with me</a> or check the linked pages for
+          details.
         </p>
         <div ref={end} />
       </div>

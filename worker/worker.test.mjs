@@ -8,7 +8,7 @@ import { selectContext, references } from './context.mjs'
 test('global daily budget is retained across requests, expires by day, and bounds state', () => {
   let state
   const now = Date.UTC(2026, 9, 13, 12)
-  for (let i = 0; i < limits.daily; i++) {
+  for (let i = 0; i < 200; i++) {
     const result = reserve(state, 'network-' + i, now + i)
     assert.equal(result.status, 200)
     state = result.state
@@ -17,7 +17,7 @@ test('global daily budget is retained across requests, expires by day, and bound
   const denied = reserve(state, 'another-network', now + 1000)
   assert.equal(denied.status, 429)
   assert.equal(denied.code, 'daily_limit')
-  assert.equal(Object.keys(denied.state.networks).length, limits.daily)
+  assert.equal(Object.keys(denied.state.networks).length, 200)
   const tomorrow = reserve(state, 'another-network', now + 86400000)
   assert.equal(tomorrow.status, 200)
   assert.equal(tomorrow.state.count, 1)
@@ -29,18 +29,20 @@ test('per-network burst, daily and concurrent limits survive new requests', () =
   assert.equal(reserve(result.state, 'visitor', now + 1).code, 'busy')
   state = result.state
   delete state.leases[result.lease]
-  for (let i = 1; i < 3; i++) {
+  for (let i = 1; i < 6; i++) {
     result = reserve(state, 'visitor', now + i)
+    assert.equal(result.status, 200)
     state = result.state
     delete state.leases[result.lease]
   }
-  assert.equal(reserve(state, 'visitor', now + 3).code, 'rate_limit')
-  for (let i = 3; i < 20; i++) {
+  assert.equal(reserve(state, 'visitor', now + 6).code, 'rate_limit')
+  for (let i = 6; i < 40; i++) {
     result = reserve(state, 'visitor', now + i * 61000)
+    assert.equal(result.status, 200)
     state = result.state
     delete state.leases[result.lease]
   }
-  assert.equal(reserve(state, 'visitor', now + 21 * 61000).code, 'network_limit')
+  assert.equal(reserve(state, 'visitor', now + 41 * 61000).code, 'network_limit')
   const a = reserve(undefined, 'a', now)
   const b = reserve(a.state, 'b', now)
   assert.equal(reserve(b.state, 'c', now).code, 'busy')
@@ -176,11 +178,13 @@ function fixture({ deny = false, broken = false } = {}) {
     assert.ok(url.startsWith('https://generativelanguage.googleapis.com/v1beta/models/'))
     const body = JSON.parse(options.body)
     assert.equal(body.systemInstruction.parts[0].text.includes('fake-provider-key'), false)
+    assert.ok(body.systemInstruction.parts[0].text.includes('Speak in first person'))
+    assert.ok(body.systemInstruction.parts[0].text.includes('clearly disclosed AI version'))
     assert.equal(options.headers['x-goog-api-key'], 'fake-provider-key')
     assert.equal(body.generationConfig.maxOutputTokens, 768)
     if (broken) throw new Error('sensitive provider error fake-provider-key')
     const raw = JSON.stringify({
-      answer: 'Vedansh builds healthcare software.\nA grounded answer.',
+      answer: 'I build healthcare software.\nA grounded answer.',
       sources: [
         'project:titronics-cloud',
         'experience:farrpro',
@@ -230,7 +234,8 @@ test('streaming replies keep keys out of context and restrict source URLs to por
   assert.equal(text.includes('https://attacker.example'), false)
   assert.ok(text.includes('https://airansh.github.io/#/work/titronics-cloud'))
   const final = text.split('\n\n').find((frame) => frame.startsWith('event: done\n'))
-  const sources = JSON.parse(final.split('data: ')[1]).sources
+  const { sources, model } = JSON.parse(final.split('data: ')[1])
+  assert.equal(model, f.env.GEMINI_MODEL)
   assert.equal(new Set(sources.map((source) => source.url)).size, sources.length)
   assert.equal(f.state().released, 1)
 })

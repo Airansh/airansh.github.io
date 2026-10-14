@@ -20,13 +20,13 @@ export function ChatWidget() {
         }}
       >
         <MessageCircle size={20} aria-hidden="true" />
-        <span>Ask about Vedansh</span>
+        <span>Talk to my Airen Bot</span>
       </button>
       {opened && (
         <Suspense
           fallback={
             <span className="sr-only" role="status">
-              Opening portfolio guide…
+              Opening Airen Bot…
             </span>
           }
         >

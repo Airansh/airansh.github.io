@@ -1,7 +1,7 @@
 export const limits = {
-  daily: 100,
-  networkDaily: 20,
-  networkMinute: 3,
+  daily: 200,
+  networkDaily: 40,
+  networkMinute: 6,
   concurrent: 2,
   leaseMs: 30000,
 }

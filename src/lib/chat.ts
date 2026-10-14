@@ -130,13 +130,13 @@ export async function askPortfolio(
 }
 export function failureMessage(code: string) {
   if (code === 'daily_limit')
-    return 'The guide has reached its daily limit. You can still explore the projects or get in touch directly.'
+    return 'Airen Bot has reached its daily limit. You can still explore the projects or get in touch directly.'
   if (code === 'network_limit')
     return 'This network has reached its daily chat limit. You can still browse the portfolio or contact Vedansh.'
   if (code === 'rate_limit' || code === 'busy')
-    return 'Please give the guide a moment, then try again.'
+    return 'Please give Airen Bot a moment, then try again.'
   if (code === 'provider_limit')
     return 'The AI service is at capacity right now. Please try again later, or explore the linked project pages.'
   if (code === 'timeout') return 'That reply took too long. Please try a shorter question.'
-  return 'The guide couldn’t finish that reply. Please try again, or contact Vedansh directly.'
+  return 'Airen Bot couldn’t finish that reply. Please try again, or contact Vedansh directly.'
 }

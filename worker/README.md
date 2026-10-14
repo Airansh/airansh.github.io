@@ -1,4 +1,4 @@
-# Portfolio guide backend
+# Airen Bot backend
 
 The website calls `https://vedansh-portfolio-chat.suas104.workers.dev/chat`. Cloudflare stores the Gemini key as an encrypted `GEMINI_API_KEY` secret. Neither the frontend build nor model context receives that key. The destination-scoped `CLOUDFLARE_API_TOKEN` in the Codex environment is used only to manage Cloudflare through `api.cloudflare.com`; it is not uploaded to the Worker or used by GitHub Pages.
 
@@ -16,11 +16,13 @@ The deployment script preserves encrypted secrets, creates an independent random
 
 To pause chat, set the Worker's plain-text `CHAT_ENABLED` binding to `false` in Cloudflare. The website then shows a service-unavailable message with a contact link. The deployment script sets this binding to `true` after local validation; use the pause switch immediately if an issue appears.
 
-The service discovers a supported lightweight Gemini model on first use, preferring `gemini-3.1-flash-lite`, then `gemini-2.5-flash-lite`, then `gemini-2.5-flash`. A supported `GEMINI_MODEL` binding can pin a model, but the deployment script owns plain-text bindings; update its metadata when pinning one. Review model availability and pricing before changing these choices. There are no automatic generation retries.
+Airen Bot speaks in first person about Vedansh's documented work, while identifying itself as an AI version of him. Its visible disclaimer explains that answers can be wrong and links to direct contact. It does not claim to be the human Vedansh or make commitments on his behalf.
+
+The service discovers a supported lightweight Gemini model on first use, preferring `gemini-3.1-flash-lite`, then `gemini-2.5-flash-lite`, then `gemini-2.5-flash`. The final SSE event includes the selected model's public identifier for verification. A supported `GEMINI_MODEL` binding can pin a model, but the deployment script owns plain-text bindings; update its metadata when pinning one. Review model availability and pricing before changing these choices. There are no automatic generation retries.
 
 ## Limits and privacy
 
-- 100 admitted attempts per UTC day across the service, 20 per network per UTC day, and three per minute per network. Failed and canceled attempts consume this budget too.
+- 200 admitted attempts per UTC day across the service, 40 per network per UTC day, and six per rolling minute per network. Failed and canceled attempts consume this budget too.
 - At most two concurrent generations globally and one per network. Expiring leases recover from disconnects or failed requests.
 - 1,000-character questions, six bounded history messages, 16 KB request bodies, 24-second server deadlines, and 768 output tokens per generation.
 - Limits are checked atomically in the Durable Object. Storage failure closes chat rather than bypassing the budget. CORS accepts only `https://airansh.github.io`, but CORS is not treated as authentication or as the spending limit.

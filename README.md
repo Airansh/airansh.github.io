@@ -1,6 +1,6 @@
 # Vedansh Airen — Engineering Portfolio
 
-A React/TypeScript portfolio connecting professional experience with 28 projects, eight detailed case studies, five Mermaid system views, research, and technical writing. Dark and light themes, responsive navigation, search and category/context filters, a downloadable resume, and an AI portfolio guide are included.
+A React/TypeScript portfolio connecting professional experience with 28 projects, eight detailed case studies, five Mermaid system views, research, and technical writing. Dark and light themes, responsive navigation, search and category/context filters, a downloadable resume, and Airen Bot, an AI version of Vedansh, are included.
 
 ## Develop
 
