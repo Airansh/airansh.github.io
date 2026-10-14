@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom'
 import { featuredProjects, projects } from '../data/projects'
 import { profile } from '../data/profile'
 import { ExternalLink, Eyebrow, ProjectCard, ResumeLink } from '../components/ui'
+import { OrbitalVisual } from '../components/OrbitalVisual'
 export default function Home() {
   return (
     <div className="home">
@@ -55,6 +56,7 @@ export default function Home() {
           className="hero-blueprint"
           aria-label="Engineering across applications, intelligence, and data"
         >
+          <OrbitalVisual />
           <div className="blueprint-top">
             <span>
               <span className="status-dot" /> ENGINEERING ACROSS THE STACK

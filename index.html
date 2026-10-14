@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content"
     />
-    <meta name="theme-color" content="#0e1512" />
+    <meta name="theme-color" content="#080911" />
     <meta
       name="description"
       content="Vedansh Airen — software engineer building full-stack applications, enterprise AI, healthcare software, automation, and immersive research systems."
@@ -30,7 +30,13 @@
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
     <title>Vedansh Airen — Software Engineer</title>
     <script>
+      document.documentElement.dataset.motion = matchMedia('(prefers-reduced-motion: reduce)')
+        .matches
+        ? 'paused'
+        : 'running'
       try {
+        if (localStorage.getItem('va-motion') === 'paused')
+          document.documentElement.dataset.motion = 'paused'
         document.documentElement.dataset.theme =
           localStorage.getItem('va-theme') ||
           (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')

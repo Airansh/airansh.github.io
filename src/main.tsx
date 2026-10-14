@@ -6,6 +6,7 @@ import App from './App'
 import './styles.css'
 import './presentation.css'
 import './chat.css'
+import './obsidian.css'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />

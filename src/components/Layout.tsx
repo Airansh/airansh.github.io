@@ -5,6 +5,9 @@ import { profile } from '../data/profile'
 import { ExternalLink, ResumeLink } from './ui'
 import { RouteMotion } from './RouteMotion'
 import { ChatWidget } from './ChatWidget'
+import { MotionToggle } from './MotionToggle'
+import { NavigatorLauncher } from './QuickNavigator'
+import { SiteEffects } from './SiteEffects'
 const nav = [
   ['/work', 'Work'],
   ['/experience', 'Experience'],
@@ -23,7 +26,7 @@ export function Layout() {
     document.documentElement.dataset.theme = theme
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', theme === 'light' ? '#f7f8f2' : '#0e1512')
+      ?.setAttribute('content', theme === 'light' ? '#f7f6fd' : '#080911')
     try {
       localStorage.setItem('va-theme', theme)
     } catch {
@@ -126,6 +129,7 @@ export function Layout() {
             ))}
           </nav>
           <div className="header-actions">
+            <NavigatorLauncher />
             <button
               className="icon-button theme-toggle"
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
@@ -133,6 +137,7 @@ export function Layout() {
             >
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
+            <MotionToggle />
             <Link className="contact-nav" to="/contact">
               Let’s talk <ArrowUpRight size={16} />
             </Link>
@@ -161,6 +166,7 @@ export function Layout() {
       </header>
       <main id="main-content" tabIndex={-1}>
         <RouteMotion />
+        <SiteEffects />
         <Suspense
           fallback={
             <div className="page-loading" role="status">

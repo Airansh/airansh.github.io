@@ -8,7 +8,7 @@ export function RouteMotion() {
     const main = document.getElementById('main-content')
     if (!main || !('IntersectionObserver' in window) || !Element.prototype.animate) return
     const preference = matchMedia('(prefers-reduced-motion: reduce)')
-    const seen = new WeakSet<Element>()
+    let seen = new WeakSet<Element>()
     const animations = new Set<Animation>()
     const selector =
       '.section-heading, .project-card, .approach-grid > article, .career-list > a, .contact-band, .timeline-item, .architecture-list > article, .publication-card, .writing-card, .talk-row, .education-grid > article, .leadership-grid > article, .contact-option, .about-card, .result-cards > div'
@@ -17,7 +17,12 @@ export function RouteMotion() {
         entries.forEach((entry, index) => {
           if (!entry.isIntersecting) return
           observer.unobserve(entry.target)
-          if (preference.matches || entry.target.contains(document.activeElement)) return
+          if (
+            preference.matches ||
+            document.documentElement.dataset.motion === 'paused' ||
+            entry.target.contains(document.activeElement)
+          )
+            return
           const animation = entry.target.animate([{ translate: '0 14px' }, { translate: '0 0' }], {
             duration: 480,
             delay: (index % 3) * 45,
@@ -30,27 +35,33 @@ export function RouteMotion() {
       { threshold: 0.08 },
     )
     function discover() {
+      if (preference.matches || document.documentElement.dataset.motion === 'paused') return
       main!.querySelectorAll(selector).forEach((element) => {
         if (seen.has(element)) return
         seen.add(element)
-        if (!preference.matches) observer.observe(element)
+        observer.observe(element)
       })
     }
     function changePreference() {
-      if (preference.matches) {
+      if (preference.matches || document.documentElement.dataset.motion === 'paused') {
         observer.disconnect()
         animations.forEach((animation) => animation.cancel())
+      } else {
+        seen = new WeakSet<Element>()
+        discover()
       }
     }
     discover()
     const mutations = new MutationObserver(discover)
     mutations.observe(main, { childList: true, subtree: true })
     preference.addEventListener('change', changePreference)
+    window.addEventListener('portfolio-motion', changePreference)
     return () => {
       observer.disconnect()
       mutations.disconnect()
       animations.forEach((animation) => animation.cancel())
       preference.removeEventListener('change', changePreference)
+      window.removeEventListener('portfolio-motion', changePreference)
     }
   }, [pathname])
   return null
