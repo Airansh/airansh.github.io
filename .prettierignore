@@ -3,3 +3,4 @@ package-lock.json
 dist
 playwright-report
 test-results
+worker/portfolio-context.mjs

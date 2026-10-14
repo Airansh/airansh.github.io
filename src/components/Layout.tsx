@@ -4,6 +4,7 @@ import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { profile } from '../data/profile'
 import { ExternalLink, ResumeLink } from './ui'
 import { RouteMotion } from './RouteMotion'
+import { ChatWidget } from './ChatWidget'
 const nav = [
   ['/work', 'Work'],
   ['/experience', 'Experience'],
@@ -217,6 +218,7 @@ export function Layout() {
           </a>
         </div>
       </footer>
+      <ChatWidget />
     </>
   )
 }

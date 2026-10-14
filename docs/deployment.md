@@ -40,4 +40,4 @@ VITE_BASE_PATH=/ VITE_SITE_URL=https://airansh.github.io/ npm run build
 
 Hash routes keep browser refreshes compatible with static hosting. For example, the existing target's project URL is `https://airansh.github.io/vedanshairen.github.io/#/work/evalforge`. Unknown app routes show an accessible recovery page; `404.html` covers unknown server paths. Social previews use the homepage's static metadata because fragments are not sent to the server.
 
-No custom domain, paid infrastructure, database, authentication, or API key is required. A future custom domain would need its own configuration and live verification.
+The static portfolio requires no custom domain or API key. Its AI guide uses a separate Cloudflare Worker and an encrypted Gemini secret; see [the backend guide](../worker/README.md). Deploy that backend separately from GitHub Pages. No Gemini or Cloudflare credentials belong in Vite variables or frontend build artifacts. A future custom domain would need its own configuration and live verification.

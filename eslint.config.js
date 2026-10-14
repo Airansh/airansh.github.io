@@ -4,10 +4,18 @@ import tseslint from 'typescript-eslint'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 export default tseslint.config(
-  { ignores: ['dist', 'node_modules', 'playwright-report', 'test-results'] },
+  {
+    ignores: [
+      'dist',
+      'node_modules',
+      'playwright-report',
+      'test-results',
+      'worker/portfolio-context.mjs',
+    ],
+  },
   js.configs.recommended,
   {
-    files: ['scripts/*.mjs'],
+    files: ['scripts/*.mjs', 'worker/*.mjs'],
     languageOptions: { globals: { ...globals.node, ...globals.browser } },
   },
   ...tseslint.configs.recommended,

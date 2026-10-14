@@ -1,10 +1,10 @@
 # Vedansh Airen — Engineering Portfolio
 
-A static React/TypeScript portfolio connecting professional experience with 27 projects, eight detailed case studies, five Mermaid system views, research, and technical writing. Dark and light themes, responsive navigation, search and category/context filters, and a downloadable resume are included.
+A React/TypeScript portfolio connecting professional experience with 28 projects, eight detailed case studies, five Mermaid system views, research, and technical writing. Dark and light themes, responsive navigation, search and category/context filters, a downloadable resume, and an AI portfolio guide are included.
 
 ## Develop
 
-Use Node.js 24 and npm. The lockfile is committed. No API keys, paid services, database, or backend are needed.
+Use Node.js 24 and npm. The lockfile is committed. The static site builds and runs without API keys. The optional chat feature uses a separately deployed Cloudflare Worker; its secrets are never bundled into the website.
 
 ```sh
 npm ci
@@ -17,6 +17,7 @@ Vite runs on port 5173. Use the existing checkout in cloud tasks; a separate wor
 npm run typecheck
 npm run lint
 npm test
+npm run test:worker
 npm run build
 npm run test:e2e
 ```
@@ -46,6 +47,6 @@ Vite supports both a root user site and a project subpath through `VITE_BASE_PAT
 
 ## Design and assets
 
-The design uses locally bundled DM Sans and IBM Plex Mono fonts, Lucide icons, restrained motion, and CSS-rendered technical visuals. Mermaid is loaded only on pages that need it. The EvalForge screenshot is sourced from its public repository and credited in the content provenance document. Public-site operation does not call model APIs or third-party analytics. A dependency override requires KaTeX 0.18.2 or later to address GHSA-238p-pmpm-9mq7 in Mermaid’s transitive dependency; the rendered diagram types are covered by browser tests.
+The design uses locally bundled DM Sans and IBM Plex Mono fonts, Lucide icons, restrained motion, and CSS-rendered technical visuals. Mermaid is loaded only on pages that need it. The EvalForge screenshot is sourced from its public repository and credited in the content provenance document. Chat code loads on demand; questions reach Gemini through the protected Worker only after a visitor sends one. No third-party analytics are included. See [the chat backend guide](worker/README.md) for credentials, context refresh, limits, privacy, and deployment. A dependency override requires KaTeX 0.18.2 or later to address GHSA-238p-pmpm-9mq7 in Mermaid’s transitive dependency; the rendered diagram types are covered by browser tests.
 
 To format changes, run `npx prettier --write src tests docs *.ts *.json *.js .github README.md index.html`.
