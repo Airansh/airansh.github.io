@@ -1,147 +1,151 @@
-/* A decorative scene behind the existing document; no content lives in these layers. */
+/* The homepage sphere is independent; the chat companion is the only floating model. */
 #root {
   isolation: isolate;
 }
-.immersive-scene {
-  --scene-gutter: max(38px, calc((100vw - 1240px) / 2 - 20px));
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
-  opacity: 0.7;
-  mask-image: linear-gradient(
-    90deg,
-    #000,
-    #000 calc(var(--scene-gutter) - 20px),
-    transparent calc(var(--scene-gutter) + 10px),
-    transparent calc(100% - var(--scene-gutter) - 10px),
-    #000 calc(100% - var(--scene-gutter) + 20px)
-  );
-}
-.immersive-scene canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.immersive-scene::after {
-  content: '';
-  position: absolute;
-  inset: 55% -50% -65%;
-  background-image:
-    linear-gradient(#9e85ef1c 1px, transparent 1px),
-    linear-gradient(90deg, #9e85ef1c 1px, transparent 1px);
-  background-size: 70px 70px;
-  transform: perspective(450px) rotateX(62deg);
-  mask-image: linear-gradient(transparent, #000 40%, transparent 85%);
-}
-.scene-fallback {
-  position: absolute;
-  inset: 0;
-}
-.scene-fallback i,
-.scene-fallback b,
-.scene-fallback em {
-  position: absolute;
-  width: 260px;
-  height: 260px;
-  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
-  border-radius: 50%;
-  right: -100px;
-  top: 16%;
-  box-shadow:
-    inset 0 0 45px #9975ff18,
-    0 0 65px #9975ff12;
-  transform: rotate(-35deg) scaleX(0.55);
-}
-.scene-fallback b {
-  transform: rotate(40deg) scaleX(0.65);
-}
-.scene-fallback em {
-  top: 65%;
-  right: auto;
-  left: -130px;
-  transform: rotate(65deg) scaleX(0.7);
-}
-[data-renderer='webgl'] > .scene-fallback,
-[data-renderer='webgl'] > .robot-fallback {
-  display: none;
-}
-
-/* The small guide points at the existing chat button and shares its hit target. */
 .robot-companion {
   position: absolute;
-  width: 150px;
-  height: 170px;
-  right: -4px;
-  bottom: calc(100% - 9px);
+  width: 210px;
+  height: 190px;
+  right: -7px;
+  bottom: calc(100% - 18px);
   pointer-events: none;
-  filter: drop-shadow(0 12px 16px #05030e50);
+  filter: drop-shadow(0 14px 14px #05030e35);
   transform-origin: bottom center;
   transition:
-    transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
-    filter 450ms;
+    transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 400ms;
 }
 .robot-companion canvas {
   width: 100%;
   height: 100%;
   display: block;
+  pointer-events: auto;
+  cursor: pointer;
+  clip-path: polygon(8% 16%, 92% 16%, 100% 87%, 0 87%);
+}
+.robot-companion canvas[hidden] {
+  display: none;
+}
+[data-renderer='webgl'] > .robot-fallback {
+  display: none;
 }
 .robot-fallback {
   position: absolute;
-  left: 35px;
-  top: 38px;
-  width: 64px;
-  height: 48px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #fff, #9f97c6);
-  box-shadow: inset -5px -5px 8px #645c99;
+  width: 112px;
+  height: 102px;
+  left: 49px;
+  top: 43px;
+  border-radius: 37%;
+  background: linear-gradient(135deg, #fff 15%, #eeeef2 55%, #c6c7d1);
+  box-shadow:
+    inset 3px 4px 7px #fff,
+    inset -3px -5px 9px #9295a54a;
+  pointer-events: auto;
+  cursor: pointer;
+  animation: companion-float 3s ease-in-out infinite;
 }
-.robot-fallback::before {
-  content: '';
-  position: absolute;
-  inset: 9px 7px;
-  border-radius: 9px;
-  background: #101629;
-}
+.robot-fallback::before,
 .robot-fallback::after {
   content: '';
   position: absolute;
-  width: 7px;
-  height: 11px;
-  background: #8beaff;
+  width: 19px;
+  height: 29px;
+  top: -8px;
+  border-radius: 50%;
+  background: #f3f3f6;
+  z-index: -1;
+}
+.robot-fallback::before {
+  left: 15px;
+  transform: rotate(-30deg);
+}
+.robot-fallback::after {
+  right: 15px;
+  transform: rotate(30deg);
+}
+.robot-face {
+  position: absolute;
+  inset: 13px 11px 17px;
+  border-radius: 32%;
+  background: linear-gradient(135deg, #303239, #11151b 70%);
+  box-shadow:
+    inset 1px 2px 4px #0009,
+    0 1px 2px #fff;
+}
+.robot-face i,
+.robot-face b {
+  position: absolute;
+  top: 23px;
+  width: 14px;
+  height: 19px;
   border-radius: 5px;
-  left: 20px;
-  top: 18px;
-  box-shadow: 19px 0 #8beaff;
+  background: repeating-linear-gradient(#f4ffff 0 2px, #d5e4e9 2px 3px);
+  box-shadow: 0 0 9px #e3faff7a;
+  animation: companion-blink 5s infinite;
 }
-.robot-fallback i {
+.robot-face i {
+  left: 19px;
+}
+.robot-face b {
+  right: 19px;
+}
+.robot-face em {
   position: absolute;
-  width: 42px;
-  height: 42px;
-  top: 52px;
-  left: 10px;
+  left: 35px;
+  top: 49px;
+  width: 20px;
+  height: 10px;
+  background: #f4ffff;
+  border-radius: 1px 1px 12px 12px;
+  box-shadow: 0 0 6px #e3faff60;
+}
+.robot-hand {
+  position: absolute;
+  width: 21px;
+  height: 29px;
+  background: linear-gradient(120deg, #fff, #c8cad7);
   border-radius: 10px;
-  background: linear-gradient(135deg, #dedcf9, #958caf);
+  box-shadow: inset -2px -2px 4px #8e91a53a;
 }
-.robot-fallback b {
-  position: absolute;
-  width: 12px;
-  height: 38px;
-  top: 57px;
-  left: 62px;
-  border-radius: 8px;
-  background: #a88be5;
+.robot-hand-left {
+  left: -27px;
+  top: 43px;
   transform: rotate(-25deg);
 }
-.robot-fallback em {
+.robot-hand-right {
+  right: -27px;
+  top: 56px;
+  transform: rotate(8deg);
+}
+.robot-hand-right::after {
+  content: '';
   position: absolute;
-  width: 5px;
-  height: 14px;
-  top: -12px;
-  left: 29px;
-  border-radius: 4px;
-  background: #8beaff;
+  width: 7px;
+  height: 27px;
+  right: 3px;
+  top: 21px;
+  border-radius: 5px;
+  background: linear-gradient(#eeeff4 45%, #989dac 47% 53%, #eeeff4 55%);
+}
+@keyframes companion-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+@keyframes companion-blink {
+  0%,
+  58%,
+  64%,
+  100% {
+    scale: 1 1;
+  }
+  61% {
+    scale: 1 0.12;
+  }
 }
 
 /* Glass, depth, and light respond to the existing theme palette. */
@@ -327,33 +331,33 @@
 }
 
 @media (max-width: 960px) {
-  .immersive-scene {
-    opacity: 0.45;
+  .robot-fallback {
+    scale: 0.78;
+    transform-origin: top left;
+    left: 39px;
+    top: 34px;
   }
   .section-heading::after {
     display: none;
   }
   .robot-companion {
-    width: 112px;
-    height: 130px;
-    bottom: calc(100% - 7px);
+    width: 164px;
+    height: 152px;
+    bottom: calc(100% - 15px);
   }
 }
 @media (max-width: 600px) {
-  .immersive-scene {
-    opacity: 0.3;
-    mask-image: linear-gradient(90deg, #000, transparent 18px, transparent calc(100% - 18px), #000);
-  }
   .robot-companion {
-    width: 82px;
-    height: 94px;
+    width: 124px;
+    height: 116px;
     right: 3px;
+    bottom: calc(100% - 30px);
   }
   .robot-fallback {
-    transform: scale(0.6);
+    scale: 0.6;
     transform-origin: top left;
-    left: 16px;
-    top: 20px;
+    left: 29px;
+    top: 27px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -361,6 +365,11 @@
   ::view-transition-old(*),
   ::view-transition-new(*) {
     animation: none !important;
+  }
+  .robot-fallback,
+  .robot-face i,
+  .robot-face b {
+    animation: none;
   }
   .robot-companion,
   .desktop-nav a::after {

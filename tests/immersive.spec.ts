@@ -1,23 +1,22 @@
 import { expect, test } from '@playwright/test'
 
-test('the robot and background render, pause together, and preserve the chat interaction', async ({
+test('the expressive robot pauses, opens chat on click, and preserves the homepage sphere', async ({
   page,
 }) => {
   await page.goto('/')
   const robot = page.locator('.robot-companion')
-  const background = page.locator('.immersive-scene')
+  const sphere = page.locator('.orbital-canvas')
   await expect(robot).toBeVisible()
-  await expect(background).toBeVisible()
+  await expect(sphere).toBeVisible()
+  await expect(page.locator('.immersive-scene, .scene-fallback')).toHaveCount(0)
   await expect(robot).toHaveAttribute('aria-hidden', 'true')
-  await expect(background).toHaveAttribute('aria-hidden', 'true')
   await expect(robot).toHaveAttribute('data-renderer', 'webgl')
-  await expect(background).toHaveAttribute('data-renderer', 'webgl')
   await page.getByRole('button', { name: 'Pause visual motion' }).click()
   await page.waitForTimeout(100)
   const still = await robot.screenshot()
   await page.waitForTimeout(200)
   expect(await robot.screenshot()).toEqual(still)
-  await page.getByRole('button', { name: 'Talk to my Airen Bot' }).click()
+  await robot.locator('canvas').click({ position: { x: 105, y: 90 } })
   await expect(page.getByRole('dialog', { name: 'Airen Bot' })).toBeVisible()
   await expect(robot).toHaveCount(0)
   await page.keyboard.press('Escape')
@@ -66,7 +65,7 @@ test('a device without WebGL retains decorative fallbacks, navigation, and downl
   await page.setViewportSize({ width: 320, height: 844 })
   await page.goto('/')
   await expect(page.locator('.robot-fallback')).toBeVisible()
-  await expect(page.locator('.scene-fallback')).toBeVisible()
+  await expect(page.locator('.immersive-scene, .scene-fallback')).toHaveCount(0)
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Vedansh Airen')
   await expect(
     page.getByRole('button', { name: 'Motion reduced by your system settings' }),

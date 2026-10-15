@@ -1,7 +1,7 @@
 import { lazy, Suspense, useRef, useState } from 'react'
 import { MessageCircle } from 'lucide-react'
 const ChatPanel = lazy(() => import('./ChatPanel'))
-const ImmersiveScene = lazy(() => import('./ImmersiveScene'))
+const RobotCompanion = lazy(() => import('./RobotCompanion'))
 export function ChatWidget() {
   const [opened, setOpened] = useState(false)
   const [open, setOpen] = useState(false)
@@ -22,7 +22,7 @@ export function ChatWidget() {
       >
         {!open && (
           <Suspense fallback={null}>
-            <ImmersiveScene companion />
+            <RobotCompanion />
           </Suspense>
         )}
         <MessageCircle size={20} aria-hidden="true" />

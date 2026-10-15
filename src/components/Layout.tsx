@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, Github, Linkedin, Menu, Moon, Sun, X } from 'lucide-react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { profile } from '../data/profile'
@@ -8,7 +8,6 @@ import { ChatWidget } from './ChatWidget'
 import { MotionToggle } from './MotionToggle'
 import { NavigatorLauncher } from './QuickNavigator'
 import { SiteEffects } from './SiteEffects'
-const ImmersiveScene = lazy(() => import('./ImmersiveScene'))
 const nav = [
   ['/work', 'Work'],
   ['/experience', 'Experience'],
@@ -91,9 +90,6 @@ export function Layout() {
   }, [menu])
   return (
     <>
-      <Suspense fallback={null}>
-        <ImmersiveScene />
-      </Suspense>
       <a
         className="skip-link"
         href="#main-content"
