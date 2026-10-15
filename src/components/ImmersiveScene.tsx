@@ -213,7 +213,7 @@ export default function ImmersiveScene({ companion = false }: { companion?: bool
         const span = Math.tan(THREE.MathUtils.degToRad(21)) * 10 * camera.aspect
         sculpture.position.set(span * 0.94, 1.6, 0)
         crystal.position.set(-span * 0.96, -1.4, -0.4)
-        satellite.position.set(-span * 0.55, 3.4, -1)
+        satellite.position.set(-span * 1.02, 2.8, -1)
       }
       refresh()
     }

@@ -10,16 +10,14 @@
   pointer-events: none;
   overflow: hidden;
   opacity: 0.7;
-  mask-image:
-    linear-gradient(
-      90deg,
-      #000,
-      #000 calc(var(--scene-gutter) - 20px),
-      transparent calc(var(--scene-gutter) + 10px),
-      transparent calc(100% - var(--scene-gutter) - 10px),
-      #000 calc(100% - var(--scene-gutter) + 20px)
-    ),
-    linear-gradient(#000, #000 110px, transparent 180px);
+  mask-image: linear-gradient(
+    90deg,
+    #000,
+    #000 calc(var(--scene-gutter) - 20px),
+    transparent calc(var(--scene-gutter) + 10px),
+    transparent calc(100% - var(--scene-gutter) - 10px),
+    #000 calc(100% - var(--scene-gutter) + 20px)
+  );
 }
 .immersive-scene canvas {
   display: block;
@@ -344,9 +342,7 @@
 @media (max-width: 600px) {
   .immersive-scene {
     opacity: 0.3;
-    mask-image:
-      linear-gradient(90deg, #000, transparent 18px, transparent calc(100% - 18px), #000),
-      linear-gradient(#000, transparent 110px);
+    mask-image: linear-gradient(90deg, #000, transparent 18px, transparent calc(100% - 18px), #000);
   }
   .robot-companion {
     width: 82px;
