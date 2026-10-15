@@ -126,8 +126,13 @@ for (const theme of ['dark', 'light']) {
 }
 
 test('a visitor can stop a pending reply and keep the panel usable', async ({ page }) => {
+  let release!: () => void
+  const pending = new Promise<void>((resolve) => {
+    release = resolve
+  })
   await page.route(api, async (route) => {
-    await new Promise((resolve) => setTimeout(resolve, 700))
+    // Keep the reply pending until Stop is clicked, independent of renderer speed.
+    await pending
     await route
       .fulfill({ status: 200, contentType: 'text/event-stream', body: response() })
       .catch(() => {})
@@ -137,7 +142,11 @@ test('a visitor can stop a pending reply and keep the panel usable', async ({ pa
   const dialog = page.getByRole('dialog')
   await dialog.getByRole('textbox').fill('Tell me about the AI Gateway.')
   await dialog.getByRole('button', { name: 'Send question' }).click()
-  await dialog.getByRole('button', { name: 'Stop reply' }).click()
+  try {
+    await dialog.getByRole('button', { name: 'Stop reply' }).click()
+  } finally {
+    release()
+  }
   await expect(dialog.getByRole('alert')).toContainText('Reply stopped')
   await dialog.getByRole('button', { name: 'Clear conversation' }).click()
   await expect(dialog.getByRole('textbox')).toBeFocused()

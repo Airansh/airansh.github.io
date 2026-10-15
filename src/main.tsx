@@ -7,6 +7,7 @@ import './styles.css'
 import './presentation.css'
 import './chat.css'
 import './obsidian.css'
+import './immersive.css'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />

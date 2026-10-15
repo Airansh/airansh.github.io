@@ -21,6 +21,8 @@ test('search and category/context filters compose and survive refresh', async ({
 })
 
 test('all project routes load with direct project copy and correct titles', async ({ page }) => {
+  // This single test visits 28 complete pages, including on software WebGL runners.
+  test.slow()
   for (const project of projects) {
     await page.goto(`/#/work/${project.id}`)
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(project.title)

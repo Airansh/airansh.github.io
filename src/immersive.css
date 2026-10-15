@@ -1,0 +1,378 @@
+/* A decorative scene behind the existing document; no content lives in these layers. */
+#root {
+  isolation: isolate;
+}
+.immersive-scene {
+  --scene-gutter: max(38px, calc((100vw - 1240px) / 2 - 20px));
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.7;
+  mask-image:
+    linear-gradient(
+      90deg,
+      #000,
+      #000 calc(var(--scene-gutter) - 20px),
+      transparent calc(var(--scene-gutter) + 10px),
+      transparent calc(100% - var(--scene-gutter) - 10px),
+      #000 calc(100% - var(--scene-gutter) + 20px)
+    ),
+    linear-gradient(#000, #000 110px, transparent 180px);
+}
+.immersive-scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.immersive-scene::after {
+  content: '';
+  position: absolute;
+  inset: 55% -50% -65%;
+  background-image:
+    linear-gradient(#9e85ef1c 1px, transparent 1px),
+    linear-gradient(90deg, #9e85ef1c 1px, transparent 1px);
+  background-size: 70px 70px;
+  transform: perspective(450px) rotateX(62deg);
+  mask-image: linear-gradient(transparent, #000 40%, transparent 85%);
+}
+.scene-fallback {
+  position: absolute;
+  inset: 0;
+}
+.scene-fallback i,
+.scene-fallback b,
+.scene-fallback em {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-radius: 50%;
+  right: -100px;
+  top: 16%;
+  box-shadow:
+    inset 0 0 45px #9975ff18,
+    0 0 65px #9975ff12;
+  transform: rotate(-35deg) scaleX(0.55);
+}
+.scene-fallback b {
+  transform: rotate(40deg) scaleX(0.65);
+}
+.scene-fallback em {
+  top: 65%;
+  right: auto;
+  left: -130px;
+  transform: rotate(65deg) scaleX(0.7);
+}
+[data-renderer='webgl'] > .scene-fallback,
+[data-renderer='webgl'] > .robot-fallback {
+  display: none;
+}
+
+/* The small guide points at the existing chat button and shares its hit target. */
+.robot-companion {
+  position: absolute;
+  width: 150px;
+  height: 170px;
+  right: -4px;
+  bottom: calc(100% - 9px);
+  pointer-events: none;
+  filter: drop-shadow(0 12px 16px #05030e50);
+  transform-origin: bottom center;
+  transition:
+    transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 450ms;
+}
+.robot-companion canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.robot-fallback {
+  position: absolute;
+  left: 35px;
+  top: 38px;
+  width: 64px;
+  height: 48px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fff, #9f97c6);
+  box-shadow: inset -5px -5px 8px #645c99;
+}
+.robot-fallback::before {
+  content: '';
+  position: absolute;
+  inset: 9px 7px;
+  border-radius: 9px;
+  background: #101629;
+}
+.robot-fallback::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 11px;
+  background: #8beaff;
+  border-radius: 5px;
+  left: 20px;
+  top: 18px;
+  box-shadow: 19px 0 #8beaff;
+}
+.robot-fallback i {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  top: 52px;
+  left: 10px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #dedcf9, #958caf);
+}
+.robot-fallback b {
+  position: absolute;
+  width: 12px;
+  height: 38px;
+  top: 57px;
+  left: 62px;
+  border-radius: 8px;
+  background: #a88be5;
+  transform: rotate(-25deg);
+}
+.robot-fallback em {
+  position: absolute;
+  width: 5px;
+  height: 14px;
+  top: -12px;
+  left: 29px;
+  border-radius: 4px;
+  background: #8beaff;
+}
+
+/* Glass, depth, and light respond to the existing theme palette. */
+.hero {
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: min(70vw, 900px);
+  height: 700px;
+  left: -25%;
+  top: -240px;
+  background: radial-gradient(ellipse, #7954ee16, transparent 66%);
+  pointer-events: none;
+}
+.orbital-scene {
+  overflow: clip;
+  border-radius: 36px;
+}
+.orbital-scene::before {
+  content: '';
+  position: absolute;
+  inset: 12% 5%;
+  border: 1px solid color-mix(in srgb, var(--accent) 17%, transparent);
+  border-radius: 50%;
+  transform: rotate(-28deg) scaleY(0.63);
+  box-shadow:
+    0 0 60px #9b71ff15,
+    inset 0 0 45px #9b71ff0b;
+  pointer-events: none;
+}
+.orbital-canvas {
+  filter: drop-shadow(0 0 12px #a382f030);
+}
+.impact-strip {
+  background: linear-gradient(
+    110deg,
+    color-mix(in srgb, var(--surface) 88%, transparent),
+    color-mix(in srgb, var(--soft) 85%, transparent)
+  );
+  box-shadow:
+    inset 0 1px 0 #bda0ff12,
+    0 20px 80px #0000000c;
+}
+.blueprint-node,
+.approach-grid > article,
+.project-card,
+.publication-card,
+.writing-card,
+.contact-option,
+.about-card {
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--ink) 4%, transparent),
+    0 14px 40px #0000000a;
+  transition:
+    transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 300ms,
+    box-shadow 450ms,
+    background-color 300ms;
+}
+.section-heading::after {
+  content: '';
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  flex-shrink: 0;
+  align-self: flex-end;
+  margin-bottom: 12px;
+}
+.desktop-nav a {
+  position: relative;
+}
+.desktop-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent), #7ddcf3);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.desktop-nav a:hover::after,
+.desktop-nav a.active::after {
+  transform: scaleX(1);
+}
+.contact-band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.contact-band::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 330px;
+  height: 330px;
+  right: -160px;
+  top: -140px;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 30px #a481ee08,
+    0 0 0 60px #a481ee06,
+    0 0 80px #a481ee15;
+  transform: rotate(-20deg) scaleX(0.8);
+}
+.button.primary {
+  background-size: 180% 100%;
+  transition:
+    background-position 500ms,
+    transform 350ms,
+    box-shadow 350ms;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html:not([data-motion='paused'])
+    :is(
+      .project-card,
+      .publication-card,
+      .writing-card,
+      .contact-option,
+      .about-card
+    )[data-pointer='active'] {
+    transform: perspective(1200px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg))
+      translateY(-5px);
+    border-color: color-mix(in srgb, var(--accent) 68%, var(--line));
+    box-shadow:
+      0 22px 60px #08031625,
+      0 0 28px #a37be512,
+      inset 0 1px 0 #d9c4ff15;
+  }
+  html:not([data-motion='paused']) .blueprint-node:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 55px #8a5fe326;
+  }
+  html:not([data-motion='paused']) .button.primary:hover {
+    background-position: 100% 0;
+    box-shadow:
+      0 12px 38px #8251ff4a,
+      inset 0 1px 0 #ffffff30;
+  }
+  html:not([data-motion='paused']) .chat-launcher:is(:hover, :focus-visible) .robot-companion {
+    transform: translateY(-6px) rotate(-5deg);
+    filter: drop-shadow(0 0 18px #9a76ec50);
+  }
+}
+
+/* Progressive navigation transitions preserve the persistent header and chat control. */
+#main-content {
+  view-transition-name: route-content;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+::view-transition-old(route-content) {
+  animation: route-depart 260ms ease both;
+}
+::view-transition-new(route-content) {
+  animation: route-arrive 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes route-depart {
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.995);
+  }
+}
+@keyframes route-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .immersive-scene {
+    opacity: 0.45;
+  }
+  .section-heading::after {
+    display: none;
+  }
+  .robot-companion {
+    width: 112px;
+    height: 130px;
+    bottom: calc(100% - 7px);
+  }
+}
+@media (max-width: 600px) {
+  .immersive-scene {
+    opacity: 0.3;
+    mask-image:
+      linear-gradient(90deg, #000, transparent 18px, transparent calc(100% - 18px), #000),
+      linear-gradient(#000, transparent 110px);
+  }
+  .robot-companion {
+    width: 82px;
+    height: 94px;
+    right: 3px;
+  }
+  .robot-fallback {
+    transform: scale(0.6);
+    transform-origin: top left;
+    left: 16px;
+    top: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  .robot-companion,
+  .desktop-nav a::after {
+    transition: none;
+  }
+}
+html[data-motion='paused']::view-transition-group(*),
+html[data-motion='paused']::view-transition-old(*),
+html[data-motion='paused']::view-transition-new(*) {
+  animation: none !important;
+}
